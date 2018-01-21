@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1、基本概念1.1、DOMDOM是JavaScript操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个JavaScript对象，从而可以用脚本进行各种操作（比如增删内容）。 浏览器会根据DOM模型，将结构化文档（比如HTML和XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。 1.2、节点DOM的最小组成单位">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM小总结">
+<meta property="og:url" content="http://yoursite.com/2017/11/06/DOM小总结/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1、基本概念1.1、DOMDOM是JavaScript操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个JavaScript对象，从而可以用脚本进行各种操作（比如增删内容）。 浏览器会根据DOM模型，将结构化文档（比如HTML和XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。 1.2、节点DOM的最小组成单位">
+<meta property="og:updated_time" content="2018-01-06T12:06:53.740Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DOM小总结">
+<meta name="twitter:description" content="1、基本概念1.1、DOMDOM是JavaScript操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个JavaScript对象，从而可以用脚本进行各种操作（比如增删内容）。 浏览器会根据DOM模型，将结构化文档（比如HTML和XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。 1.2、节点DOM的最小组成单位">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/06/DOM小总结/"/>
+
+
+
+
+
+  <title>DOM小总结 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/06/DOM小总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">DOM小总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-06T09:18:45+08:00">
+                2017-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1、基本概念"><a href="#1、基本概念" class="headerlink" title="1、基本概念"></a>1、基本概念</h1><h2 id="1-1、DOM"><a href="#1-1、DOM" class="headerlink" title="1.1、DOM"></a>1.1、DOM</h2><p>DOM是JavaScript操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个JavaScript对象，从而可以用脚本进行各种操作（比如增删内容）。</p>
+<p>浏览器会根据DOM模型，将结构化文档（比如HTML和XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。</p>
+<h2 id="1-2、节点"><a href="#1-2、节点" class="headerlink" title="1.2、节点"></a>1.2、节点</h2><p>DOM的最小组成单位叫做节点（node）。文档的树形结构（DOM树），就是由各种不同类型的节点组成。每个节点可以看作是文档树的一片叶子。<br>（==看图 go==）</p>
+<blockquote>
+<p>根据 W3C 的 HTML DOM 标准，HTML 文档中的所有内容都是节点：</p>
+</blockquote>
+<ul>
+<li>整个文档是一个文档节点</li>
+<li>每个 HTML 元素是元素节点</li>
+<li>HTML 元素内的文本是文本节点</li>
+<li>每个 HTML 属性是属性节点</li>
+<li>注释是注释节点</li>
+</ul>
+<h2 id="1-3、DOM节点信息"><a href="#1-3、DOM节点信息" class="headerlink" title="1.3、DOM节点信息"></a>1.3、DOM节点信息</h2><h3 id="（1）节点类型（nodeType）、节点名称（nodeName）"><a href="#（1）节点类型（nodeType）、节点名称（nodeName）" class="headerlink" title="（1）节点类型（nodeType）、节点名称（nodeName）"></a>（1）节点类型（nodeType）、节点名称（nodeName）</h3><p> nodeType属性返回节点类型的常数值；nodeName返回当前节点的节点名称</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>nodeType</th>
+<th>nodeName</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> Node.ELEMENT_NODE</td>
+<td>1</td>
+<td>大写的HTML元素名（标签）</td>
+</tr>
+<tr>
+<td> Node.TEXT_NODE</td>
+<td>3</td>
+<td>#text</td>
+</tr>
+<tr>
+<td> Node.PROCESSING_INSTRUCTION_NODE</td>
+<td>7</td>
+<td>一个用于XML文档的 ProcessingInstruction ，例如 &lt;?xml-stylesheet … ?&gt; 声明。</td>
+</tr>
+<tr>
+<td> Node.COMMENT_NODE</td>
+<td>8</td>
+<td>#comment （注释节点）</td>
+</tr>
+<tr>
+<td> Node.DOCUMENT_NODE</td>
+<td>9</td>
+<td>#document（文档节点）</td>
+</tr>
+<tr>
+<td> Node.DOCUMENT_TYPE_NODE</td>
+<td>10</td>
+<td>描述文档类型的 DocumentType 节点。例如 &lt;!DOCTYPE html&gt;  就是用于 HTML5 的。等同于DocumentType.name</td>
+</tr>
+<tr>
+<td> Node.DOCUMENT_FRAGMENT_NODE</td>
+<td>11</td>
+<td>#document-fragment，一个 DocumentFragment 节点（文档的片段）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注：</strong> 另外还有五种节点类型已弃用</p>
+<p>参考： <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeType" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeType</a></p>
+<blockquote>
+<p>下表列出了所有类型的节点的nodeName属性的值. （看看就好。。）</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>接口</th>
+<th>nodeName属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Attr</td>
+<td>等同于 Attr.name 属性的值</td>
+</tr>
+<tr>
+<td>CDATASection</td>
+<td>“#cdata-section”</td>
+</tr>
+<tr>
+<td>Comment</td>
+<td>“#comment”</td>
+</tr>
+<tr>
+<td>Document</td>
+<td>“#document”</td>
+</tr>
+<tr>
+<td>DocumentFragment</td>
+<td>“#document-fragment”</td>
+</tr>
+<tr>
+<td>DocumentType</td>
+<td>等同于 DocumentType.name 属性的值</td>
+</tr>
+<tr>
+<td>Element</td>
+<td>等同于 Element.tagName 属性的值</td>
+</tr>
+<tr>
+<td>Entity</td>
+<td>实体名称</td>
+</tr>
+<tr>
+<td>EntityReference</td>
+<td>实体引用名称</td>
+</tr>
+<tr>
+<td>Notation</td>
+<td>Notation名称</td>
+</tr>
+<tr>
+<td>ProcessingInstruction</td>
+<td>等同于 ProcessingInstruction.target 属性的值</td>
+</tr>
+<tr>
+<td>text</td>
+<td>“#text”</td>
+</tr>
+</tbody>
+</table>
+<p><strong>栗子：</strong></p>
+<p>使用nodeType属性确定一个节点的类型，比较方便。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">document.querySelector(&apos;a&apos;).nodeType === 1</span><br><span class="line">// true</span><br><span class="line"></span><br><span class="line">document.querySelector(&apos;a&apos;).nodeType === Node.ELEMENT_NODE</span><br><span class="line">// true</span><br></pre></td></tr></table></figure>
+<p>ps：querySelector() 方法返回文档中匹配指定 CSS 选择器的一个元素。</p>
+<h3 id="（2）节点值（nodeValue）"><a href="#（2）节点值（nodeValue）" class="headerlink" title="（2）节点值（nodeValue）"></a>（2）节点值（nodeValue）</h3><p>Node.nodeValue属性返回一个字符串，表示当前节点本身的文本值，该属性可读写。</p>
+<p>由于只有Text节点、Comment节点、XML文档的CDATA节点有文本值，因此只有这三类节点的nodeValue可以返回结果，其他类型的节点一律返回null。同样的，也只有这三类节点可以设置nodeValue属性的值。对于那些返回null的节点，设置nodeValue属性是无效的。</p>
+<h2 id="1-4-、节点关系"><a href="#1-4-、节点关系" class="headerlink" title="1.4 、节点关系"></a>1.4 、节点关系</h2><ul>
+<li>parentNode    父节点</li>
+<li>childNodes    子节点</li>
+<li>firstChild    父节点里的第一个子节点</li>
+<li>lastChild     父节点里的最后一个子节点</li>
+<li>nextSibling    与子节点并列的下一个兄弟节点</li>
+<li>previousSibling   与子节点并列的上一个兄弟节点</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;DOM&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;h1&gt;我的父节点是谁？&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;Hello world!&lt;/p&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>（1）Node.parentNode</p>
+</blockquote>
+<p>parentNode属性返回当前节点的父节点。对于一个节点来说，它的父节点只可能是三种类型：元素(Element )节点、文档(Document )节点、文档碎片(DocumentFragment)节点。</p>
+<blockquote>
+<p>（2）Node.childNodes</p>
+</blockquote>
+<p>childNodes属性返回一个NodeList集合，成员包括当前节点的所有子节点。注意，除了HTML元素节点，该属性返回的还包括Text节点和Comment节点。如果当前节点不包括任何子节点，则返回一个空的NodeList集合。由于NodeList对象是一个动态集合，一旦子节点发生变化，立刻会反映在返回结果之中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var ulElementChildNodes = document.querySelector(&apos;ul&apos;).childNodes;</span><br></pre></td></tr></table></figure>
+<p><strong>ps</strong>：</p>
+<ol>
+<li>NodeList 对象代表一个有顺序的节点列表。可通过节点列表中的节点索引号来访问列表中的节点(索引号由0开始)；也可以用 length 属性来确定指定类名的元素个数。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//查看文档中有多少个样式 class=&quot;example&quot; 的元素</span><br><span class="line">document.getElementsByClassName(&quot;example&quot;).length;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>（3）Node.firstChild，Node.lastChild<br>firstChild属性返回当前节点的第一个子节点，如果当前节点没有子节点，则返回null（注意，不是undefined）。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;p id=&quot;para-01&quot;&gt;</span><br><span class="line">    &lt;span&gt;First span&lt;/span&gt;</span><br><span class="line">&lt;/p&gt;</span><br><span class="line">&lt;p id=&quot;para-02&quot;&gt;&lt;span&gt;First span&lt;/span&gt; &lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    console.log(</span><br><span class="line">            document.getElementById(&apos;para-01&apos;).firstChild.nodeName,</span><br><span class="line">            document.getElementById(&apos;para-02&apos;).firstChild.nodeName</span><br><span class="line">    ) ;  //??</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>（4）Node.nextSibling</p>
+</blockquote>
+<p>Node.nextSibling属性返回紧跟在当前节点后面的第一个同级节点。如果当前节点后面没有同级节点，则返回null。注意，该属性还包括文本节点和评论节点。因此如果当前节点后面有空格，该属性会返回一个文本节点，内容为空格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;div-01&quot;&gt;Here is div-01&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;div-02&quot;&gt;Here is div-02&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    var el = document.getElementById(&apos;div-01&apos;).nextSibling,</span><br><span class="line">        i = 1;</span><br><span class="line">    while (el) &#123;</span><br><span class="line">      console.log(i + &apos;. &apos; + el.nodeName);  //??</span><br><span class="line">      el = el.nextSibling;</span><br><span class="line">      i++;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>下面两个表达式指向同一个节点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//???</span><br><span class="line">document.childNodes[0].childNodes[1]</span><br><span class="line">document.firstChild.firstChild.nextSibling</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>（5）Node.previousSibling</p>
+</blockquote>
+<p>previousSibling属性返回当前节点前面的、距离最近的一个同级节点。如果当前节点前面没有同级节点，则返回null。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&lt;span id=&quot;b1&quot;&gt;&lt;/span&gt;&lt;span id=&quot;b2&quot;&gt;&lt;/span&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    document.getElementById(&quot;b1&quot;).previousSibling;     // null</span><br><span class="line">    document.getElementById(&quot;b2&quot;).previousSibling.id;  // &quot;b1&quot;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="2、节点操作-（节点对象的一些方法）"><a href="#2、节点操作-（节点对象的一些方法）" class="headerlink" title="2、节点操作 （节点对象的一些方法）"></a>2、节点操作 （节点对象的一些方法）</h1><p>方法是我们可以在节点（HTML 元素）上执行的动作。</p>
+<p>列举一些常用的：</p>
+<h3 id="2-1、查找元素节点"><a href="#2-1、查找元素节点" class="headerlink" title="2.1、查找元素节点"></a>2.1、查找元素节点</h3><ul>
+<li>document.getElementById(id) ，返回带有指定 ID 的元素。</li>
+<li>document.getElementsByName(name)，返回带有指定名称的对象的集合。（查询元素的 name 属性）</li>
+<li>document.getElementsByTagName(tagname)，返回带有指定标签名的对象的集合。</li>
+<li>document.getElementsByClassName(classname),返回文档中所有指定类名的元素集合，作为 NodeList 对象。</li>
+</ul>
+<ol>
+<li>getElementsByClassName() 在 Internet Explorer 5,6,7,8 中无效。</li>
+</ol>
+<p><strong>栗子：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;段落1&lt;/p&gt;</span><br><span class="line">&lt;div id=&quot;main&quot;&gt;</span><br><span class="line">    &lt;p&gt;段落2&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;段落3&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; name=&quot;myInput&quot;&gt;</span><br><span class="line">&lt;div class=&quot;color example&quot;&gt;classname1&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;color&quot;&gt;classname2&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">document.getElementById(&quot;main&quot;);</span><br><span class="line">document.getElementsByName(&quot;myInput&quot;);</span><br><span class="line">document.getElementById(&quot;main&quot;).getElementsByTagName(&quot;p&quot;);</span><br><span class="line">document.getElementsByClassName(&quot;example color&quot;);</span><br></pre></td></tr></table></figure>
+<h3 id="2-2、创建节点"><a href="#2-2、创建节点" class="headerlink" title="2.2、创建节点"></a>2.2、创建节点</h3><p>Node.appendChild() 方法将一个节点添加到指定父节点的子节点列表末尾。</p>
+<p>如需向 HTML DOM 添加新元素，必须首先创建该元素（元素节点），然后向一个已存在的元素追加该元素。</p>
+<p><strong>栗子：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;div1&quot;&gt;</span><br><span class="line">    &lt;p id=&quot;p1&quot;&gt;段落1&lt;/p&gt;</span><br><span class="line">    &lt;p id=&quot;p2&quot;&gt;段落2&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var para=document.createElement(&quot;p&quot;);</span><br><span class="line">    var node=document.createTextNode(&quot;段落3&quot;);</span><br><span class="line">    para.appendChild(node);</span><br><span class="line"></span><br><span class="line">    var element=document.getElementById(&quot;div1&quot;);</span><br><span class="line">    element.appendChild(para);</span><br><span class="line">    </span><br><span class="line">    //在节点前面插入</span><br><span class="line">    document.body.insertBefore(node, element);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>解析：</strong></p>
+<ul>
+<li>createElement，创建新的 <p> 元素</p></li>
+<li>createTextNode，如需向 <p> 元素添加文本，必须首先创建文本节点。</p></li>
+<li>appendChild，向 <p> 元素追加这个文本节点</p></li>
+<li>向一个已有的元素追加这个新元素。</li>
+<li>Node.insertBefore()， 在当前节点的某个子节点之前再插入一个子节点。</li>
+<li>insertBefore 方法与 appendChild 方法不同：appendChild方法传递一个参数，由依附点来调用，传递要挂载的段落；insertBefore 方法由document.body调用，传递两个参数，要挂在的段落内容 和 挂载的依附点名称，第一个参数为包含要添加内容的段落，第二个参数为依附点，即将第一个参数的段落插在第二个参数对象之前。</li>
+</ul>
+<h3 id="2-2-1、DocumentFragment-创建文档碎片节点"><a href="#2-2-1、DocumentFragment-创建文档碎片节点" class="headerlink" title="2.2.1、DocumentFragment(创建文档碎片节点)"></a>2.2.1、DocumentFragment(创建文档碎片节点)</h3><p>在更新少量节点的时候可以直接向document.body节点中添加，但是当要向document中添加大量数据是，如果直接添加这些新节点，这个过程非常缓慢，因为每添加一个节点都会调用父节点的appendChild()方法，为了解决这个问题，可以创建一个文档碎片，把所有的新节点附加其上，然后把文档碎片一次性添加到document中。</p>
+<p><strong>栗子：</strong></p>
+<p>创建十个段落，使用常规的方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//调用了十次document.body.appendChild()，每次都要产生一次页面渲染。</span><br><span class="line">for(var i = 0 ; i &lt; 10; i ++) &#123;</span><br><span class="line">    var p = document.createElement(&quot;p&quot;);</span><br><span class="line">    var oTxt = document.createTextNode(&quot;段落&quot; + i);</span><br><span class="line">    p.appendChild(oTxt);</span><br><span class="line">    document.body.appendChild(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>创建文档碎片节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var oFragment = document.createDocumentFragment();</span><br><span class="line">for( var i = 0 ; i &lt; 10; i ++ ) &#123;</span><br><span class="line">    var p = document.createElement(&quot;p&quot;);</span><br><span class="line">    var oTxt = document.createTextNode(&quot;段落&quot; + i);</span><br><span class="line">    p.appendChild(oTxt);</span><br><span class="line">    oFragment.appendChild(p);</span><br><span class="line">&#125;</span><br><span class="line">document.body.appendChild(oFragment);</span><br></pre></td></tr></table></figure>
+<p>创建十个段落，使用常规的方式</p>
+<h3 id="2-3、删除节点"><a href="#2-3、删除节点" class="headerlink" title="2.3、删除节点"></a>2.3、删除节点</h3><p> 删除 HTML 元素，您必须首先获得该元素的父元素：</p>
+<p><strong>方法</strong>：Node.removeChild()，从DOM中删除一个子节点。返回删除的节点。</p>
+<p><strong>栗子：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;div1&quot;&gt;</span><br><span class="line">    &lt;p id=&quot;p1&quot;&gt;段落1&lt;/p&gt;</span><br><span class="line">    &lt;p id=&quot;p2&quot;&gt;段落2&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    //先定位父节点,然后删除其子节点</span><br><span class="line">    //如果不是child不是parent的子节点会报错</span><br><span class="line">    var parent=document.getElementById(&quot;div1&quot;);</span><br><span class="line">    var child=document.getElementById(&quot;p1&quot;);</span><br><span class="line">    parent.removeChild(child);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //无须定位父节点,通过parentNode属性直接删除自身</span><br><span class="line">    var child=document.getElementById(&quot;p1&quot;);</span><br><span class="line">    if (child.parentNode) &#123;</span><br><span class="line">      child.parentNode.removeChild(child);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    // 移除一个元素节点的所有子节点</span><br><span class="line">    var element = document.getElementById(&quot;div1&quot;);</span><br><span class="line">    while (element.firstChild) &#123;</span><br><span class="line">        element.removeChild(element.firstChild);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="2-3、替换"><a href="#2-3、替换" class="headerlink" title="2.3、替换"></a>2.3、替换</h4><p>replacedNode = parentNode.replaceChild(newChild, oldChild); ，用指定的节点替换当前节点的一个子节点，并返回被替换掉的节点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;div1&quot;&gt;</span><br><span class="line">    &lt;p id=&quot;p1&quot;&gt;段落1&lt;/p&gt;</span><br><span class="line">    &lt;p id=&quot;p2&quot;&gt;段落2&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    // 获得被替换节点和其父节点的引用.</span><br><span class="line">    var p1 = document.createTextNode(&quot;我就是要换掉段落2&quot;);</span><br><span class="line">    var p2 = document.getElementById(&quot;p2&quot;);</span><br><span class="line">    var parentDiv = p2.parentNode;</span><br><span class="line">    </span><br><span class="line">    // 用新的p元素p1来替换掉p2</span><br><span class="line">    parentDiv.replaceChild(p1, p2);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2-4、修改"><a href="#2-4、修改" class="headerlink" title="2.4、修改"></a>2.4、修改</h3><h4 id="（1）创建-HTML-内容"><a href="#（1）创建-HTML-内容" class="headerlink" title="（1）创建 HTML 内容"></a>（1）创建 HTML 内容</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;p id=&quot;p1&quot;&gt;Hello World!&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">document.getElementById(&quot;p1&quot;).innerHTML=&quot;New text!&quot;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="（2）改变-HTML-样式"><a href="#（2）改变-HTML-样式" class="headerlink" title="（2）改变 HTML 样式"></a>（2）改变 HTML 样式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&quot;p1&quot;).style.color=&quot;blue&quot;;</span><br></pre></td></tr></table></figure>
+<h3 id="2-5、Node-hasChildNodes"><a href="#2-5、Node-hasChildNodes" class="headerlink" title="2.5、Node.hasChildNodes()"></a>2.5、Node.hasChildNodes()</h3><p>Node.hasChildNodes方法返回一个布尔值，表示当前节点是否有子节点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//如果foo节点有子节点，就移除第一个子节点。</span><br><span class="line">var foo = document.getElementById(&quot;foo&quot;);</span><br><span class="line"></span><br><span class="line">if (foo.hasChildNodes()) &#123;</span><br><span class="line">  foo.removeChild(foo.childNodes[0]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-6、Node-cloneNode"><a href="#2-6、Node-cloneNode" class="headerlink" title="2.6、Node.cloneNode()"></a>2.6、Node.cloneNode()</h3><p>Node.cloneNode方法用于克隆一个节点。它接受一个布尔值作为参数，表示是否同时克隆子节点，默认是false，即不克隆子节点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var cloneUL = document.querySelector(&apos;ul&apos;).cloneNode(true);</span><br></pre></td></tr></table></figure>
+<h3 id="The-slow-crawling-road-of-whiteMouse…"><a href="#The-slow-crawling-road-of-whiteMouse…" class="headerlink" title="The slow crawling road of whiteMouse…"></a>The slow crawling road of whiteMouse…</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/21/video标签使用小总结/" rel="prev" title="video标签使用小总结">
+                video标签使用小总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、基本概念"><span class="nav-number">1.</span> <span class="nav-text">1、基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1、DOM"><span class="nav-number">1.1.</span> <span class="nav-text">1.1、DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2、节点"><span class="nav-number">1.2.</span> <span class="nav-text">1.2、节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3、DOM节点信息"><span class="nav-number">1.3.</span> <span class="nav-text">1.3、DOM节点信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）节点类型（nodeType）、节点名称（nodeName）"><span class="nav-number">1.3.1.</span> <span class="nav-text">（1）节点类型（nodeType）、节点名称（nodeName）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）节点值（nodeValue）"><span class="nav-number">1.3.2.</span> <span class="nav-text">（2）节点值（nodeValue）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-、节点关系"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 、节点关系</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、节点操作-（节点对象的一些方法）"><span class="nav-number">2.</span> <span class="nav-text">2、节点操作 （节点对象的一些方法）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1、查找元素节点"><span class="nav-number">2.0.1.</span> <span class="nav-text">2.1、查找元素节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2、创建节点"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.2、创建节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1、DocumentFragment-创建文档碎片节点"><span class="nav-number">2.0.3.</span> <span class="nav-text">2.2.1、DocumentFragment(创建文档碎片节点)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3、删除节点"><span class="nav-number">2.0.4.</span> <span class="nav-text">2.3、删除节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3、替换"><span class="nav-number">2.0.4.1.</span> <span class="nav-text">2.3、替换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4、修改"><span class="nav-number">2.0.5.</span> <span class="nav-text">2.4、修改</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）创建-HTML-内容"><span class="nav-number">2.0.5.1.</span> <span class="nav-text">（1）创建 HTML 内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）改变-HTML-样式"><span class="nav-number">2.0.5.2.</span> <span class="nav-text">（2）改变 HTML 样式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5、Node-hasChildNodes"><span class="nav-number">2.0.6.</span> <span class="nav-text">2.5、Node.hasChildNodes()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6、Node-cloneNode"><span class="nav-number">2.0.7.</span> <span class="nav-text">2.6、Node.cloneNode()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-slow-crawling-road-of-whiteMouse…"><span class="nav-number">2.0.8.</span> <span class="nav-text">The slow crawling road of whiteMouse…</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

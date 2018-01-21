@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="选择器主要是用来确定html的树形结构中的DOM元素节点。 我们把CSS选择器分开成四部分来介绍：    基本选择器 多元素的组合选择器 属性选择器 伪类选择器         part1：基本选择器   选择器 含义     * 通用元素选择器，匹配任何元素   E 标签选择器，匹配所有使用E标签的元素   .className 类选择器   #ID id选择器    补充：    选择器 含义">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css选择器">
+<meta property="og:url" content="http://yoursite.com/2017/12/21/css选择器/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="选择器主要是用来确定html的树形结构中的DOM元素节点。 我们把CSS选择器分开成四部分来介绍：    基本选择器 多元素的组合选择器 属性选择器 伪类选择器         part1：基本选择器   选择器 含义     * 通用元素选择器，匹配任何元素   E 标签选择器，匹配所有使用E标签的元素   .className 类选择器   #ID id选择器    补充：    选择器 含义">
+<meta property="og:updated_time" content="2018-01-06T12:06:53.740Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css选择器">
+<meta name="twitter:description" content="选择器主要是用来确定html的树形结构中的DOM元素节点。 我们把CSS选择器分开成四部分来介绍：    基本选择器 多元素的组合选择器 属性选择器 伪类选择器         part1：基本选择器   选择器 含义     * 通用元素选择器，匹配任何元素   E 标签选择器，匹配所有使用E标签的元素   .className 类选择器   #ID id选择器    补充：    选择器 含义">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/21/css选择器/"/>
+
+
+
+
+
+  <title>css选择器 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/21/css选择器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">css选择器</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-21T10:07:33+08:00">
+                2017-12-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>选择器主要是用来确定html的树形结构中的DOM元素节点。</p>
+<p>我们把CSS选择器分开成四部分来介绍：</p>
+<table>
+<thead>
+<tr>
+<th>基本选择器</th>
+<th>多元素的组合选择器</th>
+<th>属性选择器</th>
+<th>伪类选择器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="part1：基本选择器"><a href="#part1：基本选择器" class="headerlink" title="part1：基本选择器"></a>part1：基本选择器</h2><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>通用元素选择器，匹配任何元素</td>
+</tr>
+<tr>
+<td>E</td>
+<td>标签选择器，匹配所有使用E标签的元素</td>
+</tr>
+<tr>
+<td>.className</td>
+<td>类选择器</td>
+</tr>
+<tr>
+<td>#ID</td>
+<td>id选择器</td>
+</tr>
+</tbody>
+</table>
+<p>补充：</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.className1.className2</td>
+<td>多类选择器（ie6不支持）</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>例子1：类选择器结合元素选择器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p.items &#123;color: red;&#125;   //匹配 p元素并且是其有一个类名叫“items”</span><br></pre></td></tr></table></figure>
+<ul>
+<li>例子2：多类选择器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.info.items &#123;background:#ccc;&#125;   //选择器只对元素中同时包含了&quot;info&quot;和&quot;items&quot;两个类才能起作用</span><br></pre></td></tr></table></figure>
+<h2 id="part2：多元素的组合选择器"><a href="#part2：多元素的组合选择器" class="headerlink" title="part2：多元素的组合选择器"></a>part2：多元素的组合选择器</h2><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E,F</td>
+<td>多元素选择器，同时匹配所有E元素或F元素，E和F之间用逗号分隔</td>
+</tr>
+<tr>
+<td>E   F</td>
+<td>后代元素选择器，匹配所有属于E元素后代的F元素，E和F之间用空格分隔（所有后代元素）</td>
+</tr>
+<tr>
+<td>E &gt; F</td>
+<td>子元素选择器，匹配所有E元素的子元素F（仅仅是子元素）</td>
+</tr>
+<tr>
+<td>E + F</td>
+<td>相邻兄弟元素选择器（相同的父元素），匹配所有紧随E元素之后的同级元素F</td>
+</tr>
+<tr>
+<td>E ~ F</td>
+<td>通用兄弟元素选择器，选择某元素后面的所有兄弟元素（注意是兄弟元素）</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>demo：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;1&lt;/li&gt;</span><br><span class="line">    &lt;li class=&quot;active&quot;&gt;2&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;3&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;4&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;5&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;6&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;7&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;8&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;9&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;</span><br><span class="line">        10</span><br><span class="line">        &lt;p&gt;我是p元素&lt;/p&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>例子：E + F</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">li + li &#123;background: green;&#125;  //选中2到10</span><br><span class="line"></span><br><span class="line">.active + li &#123;background: green;&#125;  //选中3</span><br></pre></td></tr></table></figure>
+<ul>
+<li>例子：E ~ F</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.active ~ li &#123;color: red;&#125; //选中3到10，p不会被选中</span><br></pre></td></tr></table></figure>
+<h2 id="part3：属性选择器"><a href="#part3：属性选择器" class="headerlink" title="part3：属性选择器"></a>part3：属性选择器</h2><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E[att]</td>
+<td>匹配所有具有att属性的E元素，不考虑它的值。（注意：E在此处可以省略，比如”[cheacked]”。以下同。）</td>
+</tr>
+<tr>
+<td>E[att=val]</td>
+<td>匹配所有att属性等于”val”的E元素</td>
+</tr>
+<tr>
+<td>E[att~=val]</td>
+<td>匹配所有att属性具有多个空格分隔的值、其中一个值等于”val”的E元素</td>
+</tr>
+<tr>
+<td>E[att^=”val”]</td>
+<td>属性att的值以”val”开头的元素</td>
+</tr>
+<tr>
+<td>E[att$=”val”]</td>
+<td>属性att的值以”val”结尾的元素</td>
+</tr>
+<tr>
+<td>E[att*=”val”]</td>
+<td>属性att的值包含”val”字符串的元素</td>
+</tr>
+<tr>
+<td>E[att I=val]</td>
+<td>特定属性选择器，匹配所有att属性具有多个连字号分隔（hyphen-separated）的值、其中一个值以”val”开头的E元素，主要用于lang属性，比如”en”、”en-us”、”en-gb”等等</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;demo&quot;&gt;</span><br><span class="line">    &lt;a href=&quot;&quot; class=&quot;&quot; id=&quot;one&quot; lang=&quot;zh-cn&quot;&gt;1&lt;/a&gt;</span><br><span class="line">    &lt;a href=&quot;http://git.linghit.com:666&quot; class=&quot;&quot; target=&quot;_blank&quot;&gt;2&lt;/a&gt;</span><br><span class="line">    &lt;a href=&quot;https://www.baidu.com&quot; class=&quot;&quot; title=&quot;hey man hello&quot;&gt;3&lt;/a&gt;</span><br><span class="line">    &lt;a href=&quot;&quot; class=&quot;item4 info&quot; lang=&quot;en-zh&quot;&gt;4&lt;/a&gt;</span><br><span class="line">    &lt;a href=&quot;&quot; class=&quot;&quot; id=&quot;five&quot;&gt;5&lt;/a&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>例子1：E[att] （单一属性的使用、多属性进行选择元素）</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.demo a[id] &#123;color:red;&#125;  //选中1和5</span><br><span class="line"></span><br><span class="line">.demo a[href][target] &#123;color: yellow; &#125;  //选中2，同时具备href与target属性</span><br></pre></td></tr></table></figure>
+<ul>
+<li>例子2：E[att=val]</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.demo a[id=&quot;one&quot;] &#123;color:blue;&#125;  // 选中1</span><br><span class="line">/*也可以多个属性并写*/</span><br><span class="line">.demo a[href=&quot;https://www.baidu.com/&quot;][title] &#123;color:#00ffc6;&#125;   //选中3</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>ps注意点：属性和属性值必须完全匹配</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.demo a[class=&quot;item4&quot;]&#123;color: red&#125;;  //无法匹配到4</span><br><span class="line">/*正确写法如下*/</span><br><span class="line">.demo a[class=&quot;item4 info&quot;]&#123;color: red&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>例子3：E[att~=val]，属性有多个值（空格隔开）是只需匹配到其中一个即可选中</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//例子2中无法匹配到4,用下面这个就可以</span><br><span class="line">.demo a[class~=&quot;item4&quot;]&#123;color: red&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>例子4：E[attr^=”value”]、E[att$=”val”]、E[att*=”val”]</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.demo a[href^=&quot;http://&quot;]&#123;background:orange;&#125; //选中2</span><br><span class="line">.demo a[href^=&quot;https://&quot;]&#123;background:green;&#125; //选中3</span><br><span class="line"></span><br><span class="line">.demo a[href$=&quot;666&quot;]&#123;background:pink;&#125;  //选中2</span><br><span class="line"></span><br><span class="line">/*只要你所选择的属性，其属性值中有这个&quot;value&quot;值都将被选中*/</span><br><span class="line">.demo a[title*=&quot;hello&quot;]&#123;background:black;&#125;  //选中3</span><br></pre></td></tr></table></figure>
+<ul>
+<li>例子5：E[attr|=”value”]，这个选择器会选择attr属性值等于value或以value-开头的所有元素</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.demo a[lang|=&quot;zh&quot;]&#123;background:yellow;&#125;  //选中1</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>比如说你页面中有很多图片，图片文件名都是以”figure-1”,”figure-2”这样的方式来命名的，那么使用这种选择器选中图片就很方便</p>
+</blockquote>
+<h2 id="part4：伪类选择器"><a href="#part4：伪类选择器" class="headerlink" title="part4：伪类选择器"></a>part4：伪类选择器</h2><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E:lang(c)</td>
+<td>匹配lang属性等于c的E元素</td>
+</tr>
+</tbody>
+</table>
+<p>（1） 动态伪类</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E:link</td>
+<td>匹配所有未被点击的链接</td>
+</tr>
+<tr>
+<td>E:visited</td>
+<td>匹配所有已被点击的链接</td>
+</tr>
+<tr>
+<td>E:active</td>
+<td>用于用户点击元素那一下的效果（正发生在点的那一下，松开鼠标左键此动作也就完成了）</td>
+</tr>
+<tr>
+<td>E:hover</td>
+<td>匹配鼠标悬停其上的E元素</td>
+</tr>
+<tr>
+<td>E:focus</td>
+<td>匹配获得当前焦点的E元素</td>
+</tr>
+</tbody>
+</table>
+<p>（2）UI元素状态伪类（主要用于Form元素）</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E:enabled</td>
+<td>匹配表单中激活的元素</td>
+</tr>
+<tr>
+<td>E:disabled</td>
+<td>匹配表单中禁用的元素</td>
+</tr>
+<tr>
+<td>E:checked</td>
+<td>匹配表单中被选中的radio（单选框）或checkbox（复选框）元素</td>
+</tr>
+<tr>
+<td>E::selection</td>
+<td>匹配用户当前选中的元素</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>“type=”text”有enable和disabled两种状态，前者为可写状态后者为不可状态；</li>
+<li>type =”radio”和”type=”checkbox””有”checked”和”unchecked”两种状态。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">input[type=&quot;text&quot;]:disabled &#123; background:#ddd; &#125;</span><br></pre></td></tr></table></figure>
+<p>（3）结构性伪类</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E:first-child</td>
+<td>选择某个元素的第一个子元素</td>
+</tr>
+<tr>
+<td>E:last-child</td>
+<td>选择某个元素的最后一个子元素</td>
+</tr>
+<tr>
+<td>E:nth-child()</td>
+<td>选择某个元素的一个或多个特定的子元素</td>
+</tr>
+<tr>
+<td>E:nth-last-child()</td>
+<td>选择某个元素的一个或多个特定的子元素，从这个元素的最后一个子元素开始算</td>
+</tr>
+<tr>
+<td>E:nth-of-type()</td>
+<td>选择指定的元素</td>
+</tr>
+<tr>
+<td>E:nth-last-of-type()</td>
+<td>选择指定的元素，从元素的最后一个开始计算</td>
+</tr>
+<tr>
+<td>E:first-of-type</td>
+<td>选择一个上级元素下的第一个同类子元素</td>
+</tr>
+<tr>
+<td>E:last-of-type</td>
+<td>选择一个上级元素的最后一个同类子元素</td>
+</tr>
+<tr>
+<td>E:only-child</td>
+<td>选择的元素是它的父元素的唯一一个了元素</td>
+</tr>
+<tr>
+<td>E:only-of-type</td>
+<td>选择一个元素是它的上级元素的唯一一个相同类型的子元素</td>
+</tr>
+<tr>
+<td>E:empty</td>
+<td>选择的元素里面没有任何内容</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">p:nth-child(3) &#123; color:#f00; &#125;</span><br><span class="line">p:nth-child(odd) &#123; color:#f00; &#125; //奇数</span><br><span class="line">p:nth-child(even) &#123; color:#f00; &#125; //偶数</span><br><span class="line">p:nth-child(3n+0) &#123; color:#f00; &#125;</span><br><span class="line">p:nth-child(3n) &#123; color:#f00; &#125;</span><br><span class="line">tr:nth-child(2n+11) &#123; background:#ff0; &#125;</span><br><span class="line">tr:nth-last-child(2) &#123; background:#ff0; &#125;</span><br><span class="line">p:last-child &#123; background:#ff0; &#125;</span><br><span class="line">p:only-child &#123; background:#ff0; &#125;</span><br><span class="line">p:empty &#123; background:#ff0; &#125;</span><br></pre></td></tr></table></figure>
+<p>（4）伪元素</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E:first-line</td>
+<td>匹配E元素的第一行</td>
+</tr>
+<tr>
+<td>E:first-letter</td>
+<td>匹配E元素的第一个字母</td>
+</tr>
+<tr>
+<td>E:before</td>
+<td>在E元素之前插入生成的内容</td>
+</tr>
+<tr>
+<td>E:after</td>
+<td>在E元素之后插入生成的内容</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">p:first-line &#123; font-weight:bold; color;#600; &#125;</span><br><span class="line"></span><br><span class="line">.preamble:first-letter &#123; font-size:1.5em; font-weight:bold; &#125;</span><br><span class="line"></span><br><span class="line">.cbb:before &#123; content:&quot;&quot;; display:block; height:17px; width:18px; background:url(top.png) no-repeat 0 0; margin:0 0 0 -18px; &#125;</span><br><span class="line"></span><br><span class="line">a:link:after &#123; content: &quot; (&quot; attr(href) &quot;) &quot;; &#125;</span><br></pre></td></tr></table></figure>
+<p>伪类选择器内容有待继续更进…</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/21/video标签使用小总结/" rel="next" title="video标签使用小总结">
+                <i class="fa fa-chevron-left"></i> video标签使用小总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/21/react的生命周期/" rel="prev" title="react的生命周期">
+                react的生命周期 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#part1：基本选择器"><span class="nav-number">1.</span> <span class="nav-text">part1：基本选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#part2：多元素的组合选择器"><span class="nav-number">2.</span> <span class="nav-text">part2：多元素的组合选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#part3：属性选择器"><span class="nav-number">3.</span> <span class="nav-text">part3：属性选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#part4：伪类选择器"><span class="nav-number">4.</span> <span class="nav-text">part4：伪类选择器</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
