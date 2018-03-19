@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.概述Network面板可以记录页面上的网络请求的详情信息，从发起网页页面请求Request后分析HTTP请求后得到的各个请求资源信息（包括状态、资源类型、大小、所用时间、Request和Response等），可以根据这个进行网络性能优化。 2.Network 面板由五个窗格组成1、Controls。使用这些选项可以控制 Network 面板的外观和功能。 2、Filters。 使用这些选项可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="chorme的Network面板简介">
+<meta property="og:url" content="http://yoursite.com/2018/03/19/chorme的Network面板简介/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.概述Network面板可以记录页面上的网络请求的详情信息，从发起网页页面请求Request后分析HTTP请求后得到的各个请求资源信息（包括状态、资源类型、大小、所用时间、Request和Response等），可以根据这个进行网络性能优化。 2.Network 面板由五个窗格组成1、Controls。使用这些选项可以控制 Network 面板的外观和功能。 2、Filters。 使用这些选项可以">
+<meta property="og:image" content="https://raw.githubusercontent.com/guozexuan/images/master/network/panes.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/guozexuan/images/master/network/btn.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/guozexuan/images/master/network/record.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/guozexuan/images/master/network/load.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/guozexuan/images/master/network/headers.png">
+<meta property="og:updated_time" content="2018-03-19T14:27:55.776Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="chorme的Network面板简介">
+<meta name="twitter:description" content="1.概述Network面板可以记录页面上的网络请求的详情信息，从发起网页页面请求Request后分析HTTP请求后得到的各个请求资源信息（包括状态、资源类型、大小、所用时间、Request和Response等），可以根据这个进行网络性能优化。 2.Network 面板由五个窗格组成1、Controls。使用这些选项可以控制 Network 面板的外观和功能。 2、Filters。 使用这些选项可以">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/guozexuan/images/master/network/panes.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/19/chorme的Network面板简介/"/>
+
+
+
+
+
+  <title>chorme的Network面板简介 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/19/chorme的Network面板简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">chorme的Network面板简介</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-19T22:26:10+08:00">
+                2018-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h2><p>Network面板可以记录页面上的网络请求的详情信息，从发起网页页面请求Request后分析HTTP请求后得到的各个请求资源信息（包括状态、资源类型、大小、所用时间、Request和Response等），可以根据这个进行网络性能优化。</p>
+<h2 id="2-Network-面板由五个窗格组成"><a href="#2-Network-面板由五个窗格组成" class="headerlink" title="2.Network 面板由五个窗格组成"></a>2.Network 面板由五个窗格组成</h2><p>1、Controls。使用这些选项可以控制 Network 面板的外观和功能。</p>
+<p>2、Filters。 使用这些选项可以控制在 Requests Table 中显示哪些资源。提示：按住 Cmd (Mac) 或 Ctrl (Windows/Linux) 并点击过滤器可以同时选择多个过滤器。</p>
+<p>3、Overview。 此图表显示了资源检索时间的时间线。如果您看到多条竖线堆叠在一起，则说明这些资源被同时检索。</p>
+<p>4、Requests Table。 此表格列出了检索的每一个资源。 默认情况下，此表格按时间顺序排序，最早的资源在顶部。点击资源的名称可以显示更多信息。 提示：右键点击 Timeline 以外的任何一个表格标题可以添加或移除信息列。</p>
+<p>5、Summary。 此窗格可以一目了然地展示请求总数、传输的数据量和加载时间。</p>
+<p>示意图：</p>
+<p><img src="https://raw.githubusercontent.com/guozexuan/images/master/network/panes.png" alt="image"></p>
+<h3 id="默认情况下，Requests-Table-会显示以下列。可以添加和移除列。"><a href="#默认情况下，Requests-Table-会显示以下列。可以添加和移除列。" class="headerlink" title="默认情况下，Requests Table 会显示以下列。可以添加和移除列。"></a>默认情况下，Requests Table 会显示以下列。可以添加和移除列。</h3><ul>
+<li>Name。资源的名称。</li>
+<li>Status。HTTP 状态码。</li>
+<li>Type。已请求资源的 MIME 类型。</li>
+<li>Initiator。发起请求的对象或进程。值为以下选项之一：<ul>
+<li>Parser。Chrome 的 HTML 解析器发起请求。</li>
+<li>Redirect。HTTP 重定向发起请求。</li>
+<li>Script。脚本发起请求。</li>
+<li>Other。某些其他进程或操作发起请求，例如用户通过链接或者在地址栏中输入网址导航到页面。</li>
+</ul>
+</li>
+<li>Size。响应标头（通常为数百字节）加响应正文（由服务器提供）的组合大小。</li>
+<li>Time。从请求开始至在响应中接收到最终字节的总持续时间。</li>
+<li>Timeline。Timeline 列可以显示所有网络请求的可视瀑布。 点击此列的标题可以显示一个包含更多排序字段的菜单。</li>
+</ul>
+<blockquote>
+<p>HTTP 状态码</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">分类</th>
+<th style="text-align:left">分类描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1**</td>
+<td style="text-align:left">信息，服务器收到请求，需要请求者继续执行操作</td>
+</tr>
+<tr>
+<td style="text-align:left">2**</td>
+<td style="text-align:left">成功，操作被成功接收并处理</td>
+</tr>
+<tr>
+<td style="text-align:left">3**</td>
+<td style="text-align:left">重定向，需要进一步的操作以完成请求</td>
+</tr>
+<tr>
+<td style="text-align:left">4**</td>
+<td style="text-align:left">客户端错误，请求包含语法错误或无法完成请求</td>
+</tr>
+<tr>
+<td style="text-align:left">5**</td>
+<td style="text-align:left">服务器错误，服务器在处理请求的过程中发生了错误</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>多用途Internet邮件扩展（MIME）类型 是一种标准化的方式来表示文档的性质和格式。通用结构：type/subtype，例如：text/html、image/jpeg、audio/ogg、video/mp4</p>
+</blockquote>
+<h2 id="3-记录网络活动"><a href="#3-记录网络活动" class="headerlink" title="3.记录网络活动"></a>3.记录网络活动</h2><p>在 Network 面板打开时，DevTools 在默认情况下会记录所有网络活动。 要记录活动，只需在面板打开时重新加载页面，或者等待当前加载页面上的网络活动。</p>
+<p><img src="https://raw.githubusercontent.com/guozexuan/images/master/network/btn.png" alt="image"><br>您可以通过 record 按钮指示 DevTools 是否记录。 显示红色 (记录按钮打开) 表明 DevTools 正在记录。 显示灰色 (记录按钮关闭) 表明 DevTools 未在记录。 点击此按钮可以开始或停止记录，也可以按键盘快捷键 Cmd/Ctrl+e。</p>
+<h2 id="4-在记录期间捕捉屏幕截图"><a href="#4-在记录期间捕捉屏幕截图" class="headerlink" title="4.在记录期间捕捉屏幕截图"></a>4.在记录期间捕捉屏幕截图</h2><p>Network 面板可以在页面加载期间捕捉屏幕截图。此功能称为幻灯片。</p>
+<p>点击摄影机图标可以启用幻灯片。图标为灰色时，幻灯片处于停用状态 (已停用幻灯片)。如果图标为蓝色，则说明已启用 (已启用幻灯片)。</p>
+<p>重新加载页面可以捕捉屏幕截图。屏幕截图显示在概览上方。双击屏幕截图可查看放大版本。<br><img src="https://raw.githubusercontent.com/guozexuan/images/master/network/record.png" alt="image"></p>
+<h2 id="5-查看-DOMContentLoaded-和-load-事件信息"><a href="#5-查看-DOMContentLoaded-和-load-事件信息" class="headerlink" title="5.查看 DOMContentLoaded 和 load 事件信息"></a>5.查看 DOMContentLoaded 和 load 事件信息</h2><blockquote>
+<p>DOMContentLoaded事件会在页面上DOM完全加载并解析完毕之后触发，不会等待CSS、图片、子框架加载完成。 load事件会在页面上所有DOM、CSS、JS、图片完全加载完毕之后触发。</p>
+</blockquote>
+<p>DOMContentLoaded事件在Overview上用一条蓝色竖线标记，并且在Summary以蓝色文字显示确切的时间。</p>
+<p>load事件同样会在Overview和Requests Table上用一条红色竖线标记，在Summary也会以红色文字显示确切的时间。</p>
+<p><img src="https://raw.githubusercontent.com/guozexuan/images/master/network/load.png" alt="image"></p>
+<h2 id="6-查看单个资源的详细信息"><a href="#6-查看单个资源的详细信息" class="headerlink" title="6.查看单个资源的详细信息"></a>6.查看单个资源的详细信息</h2><p>点击资源名称（位于 Requests Table 的 Name 列下）可以查看与该资源有关的更多信息。下面四个标签最常见：</p>
+<ul>
+<li>Headers。与资源关联的 HTTP 标头。</li>
+<li>Preview。JSON、图像和文本资源的预览。</li>
+<li>Response。HTTP 响应数据（如果存在）。</li>
+<li>Cookies 显示资源HTTP的Request和Response过程中的Cookies信息。</li>
+<li>Timing。资源请求生命周期的精细分解。</li>
+</ul>
+<h4 id="①查看-HTTP-标头"><a href="#①查看-HTTP-标头" class="headerlink" title="①查看 HTTP 标头"></a>①查看 HTTP 标头</h4><p>Headers 标签可以显示资源的请求网址、HTTP 方法以及响应状态代码。 此外，该标签还会列出 HTTP 响应和请求标头、它们的值以及任何查询字符串参数。</p>
+<p>点击每一部分旁边的 view source 或 view parsed 链接，您能够以源格式或者解析格式查看响应标头、请求标头或者查询字符串参数。</p>
+<p><img src="https://raw.githubusercontent.com/guozexuan/images/master/network/headers.png" alt="image"></p>
+<h4 id="②预览资源"><a href="#②预览资源" class="headerlink" title="②预览资源"></a>②预览资源</h4><p>点击 Preview 标签可以查看该资源的预览。Preview 标签可能显示一些有用的信息，也可能不显示，具体取决于所选择资源的类型。</p>
+<h4 id="③查看资源HTTP的Response信息"><a href="#③查看资源HTTP的Response信息" class="headerlink" title="③查看资源HTTP的Response信息"></a>③查看资源HTTP的Response信息</h4><p>在Response标签里面可根据选择的资源类型（JSON、图片、文本、JS、CSS）显示相应资源的Response响应内容。</p>
+<h4 id="④查看-Cookie"><a href="#④查看-Cookie" class="headerlink" title="④查看 Cookie"></a>④查看 Cookie</h4><p>如果选择的资源在Request和Response过程中存在Cookies信息，则Cookies标签会自动显示出来，在里面可以查看所有的Cookies信息。</p>
+<blockquote>
+<p>下面是 Cookie 表中每一列的说明：</p>
+</blockquote>
+<ul>
+<li>Name。Cookie 的名称。</li>
+<li>Value。Cookie 的值。</li>
+<li>Domain。Cookie 所属的域。</li>
+<li>Path。Cookie 来源的网址路径。</li>
+<li>Expires / Max-Age。Cookie 的 expires 或 max-age 属性的值。</li>
+<li>Size。Cookie 的大小（以字节为单位）。</li>
+<li>HTTP。指示 Cookie 应仅由浏览器在 HTTP 请求中设置，而无法通过 - JavaScript 访问。</li>
+<li>Secure。如果存在此属性，则指示 Cookie 应仅通过安全连接传输。</li>
+</ul>
+<h4 id="⑤查看网络耗时"><a href="#⑤查看网络耗时" class="headerlink" title="⑤查看网络耗时"></a>⑤查看网络耗时</h4><p>点击 Timing 标签可以查看单个资源请求生命周期的精细分解。<br>生命周期按照以下类别显示花费的时间：</p>
+<ul>
+<li>Queuing</li>
+<li>Stalled</li>
+<li>如果适用：DNS lookup、initial connection、SSL handshake</li>
+<li>Request sent</li>
+<li>Waiting (TTFB)</li>
+<li>Content Download</li>
+</ul>
+<blockquote>
+<p><a href="https://developers.google.com/web/tools/chrome-devtools/network-performance/resource-loading?hl=zh-cn" target="_blank" rel="noopener">官网参考</a><br><a href="http://www.css88.com/doc/chrome-devtools/" target="_blank" rel="noopener">中文参考文档</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/21/react的生命周期/" rel="next" title="react的生命周期">
+                <i class="fa fa-chevron-left"></i> react的生命周期
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-概述"><span class="nav-number">1.</span> <span class="nav-text">1.概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Network-面板由五个窗格组成"><span class="nav-number">2.</span> <span class="nav-text">2.Network 面板由五个窗格组成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#默认情况下，Requests-Table-会显示以下列。可以添加和移除列。"><span class="nav-number">2.1.</span> <span class="nav-text">默认情况下，Requests Table 会显示以下列。可以添加和移除列。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-记录网络活动"><span class="nav-number">3.</span> <span class="nav-text">3.记录网络活动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-在记录期间捕捉屏幕截图"><span class="nav-number">4.</span> <span class="nav-text">4.在记录期间捕捉屏幕截图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-查看-DOMContentLoaded-和-load-事件信息"><span class="nav-number">5.</span> <span class="nav-text">5.查看 DOMContentLoaded 和 load 事件信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-查看单个资源的详细信息"><span class="nav-number">6.</span> <span class="nav-text">6.查看单个资源的详细信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#①查看-HTTP-标头"><span class="nav-number">6.0.1.</span> <span class="nav-text">①查看 HTTP 标头</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#②预览资源"><span class="nav-number">6.0.2.</span> <span class="nav-text">②预览资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#③查看资源HTTP的Response信息"><span class="nav-number">6.0.3.</span> <span class="nav-text">③查看资源HTTP的Response信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#④查看-Cookie"><span class="nav-number">6.0.4.</span> <span class="nav-text">④查看 Cookie</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#⑤查看网络耗时"><span class="nav-number">6.0.5.</span> <span class="nav-text">⑤查看网络耗时</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
