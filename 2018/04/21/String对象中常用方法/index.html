@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1、charAt() 和 charCodeAt()charAt()：返回指定索引位置处的字符。如果超出有效范围的索引值返回空字符串。1234567var str = &amp;quot;Hello world&amp;quot;;console.log(str.charAt(0));  //Hconsole.log(str.charAt(99)); //&amp;quot;&amp;quot;``` charCodeAt()：与">
+<meta property="og:type" content="article">
+<meta property="og:title" content="String对象中常用方法">
+<meta property="og:url" content="http://yoursite.com/2018/04/21/String对象中常用方法/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1、charAt() 和 charCodeAt()charAt()：返回指定索引位置处的字符。如果超出有效范围的索引值返回空字符串。1234567var str = &amp;quot;Hello world&amp;quot;;console.log(str.charAt(0));  //Hconsole.log(str.charAt(99)); //&amp;quot;&amp;quot;``` charCodeAt()：与">
+<meta property="og:updated_time" content="2018-04-23T01:14:16.923Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="String对象中常用方法">
+<meta name="twitter:description" content="1、charAt() 和 charCodeAt()charAt()：返回指定索引位置处的字符。如果超出有效范围的索引值返回空字符串。1234567var str = &amp;quot;Hello world&amp;quot;;console.log(str.charAt(0));  //Hconsole.log(str.charAt(99)); //&amp;quot;&amp;quot;``` charCodeAt()：与">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/21/String对象中常用方法/"/>
+
+
+
+
+
+  <title>String对象中常用方法 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/21/String对象中常用方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">String对象中常用方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-21T22:00:10+08:00">
+                2018-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1、charAt-和-charCodeAt"><a href="#1、charAt-和-charCodeAt" class="headerlink" title="1、charAt() 和 charCodeAt()"></a>1、charAt() 和 charCodeAt()</h3><p>charAt()：返回指定索引位置处的字符。如果超出有效范围的索引值返回空字符串。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;Hello world&quot;;</span><br><span class="line"></span><br><span class="line">console.log(str.charAt(0));  //H</span><br><span class="line">console.log(str.charAt(99)); //&quot;&quot;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">charCodeAt()：与charAt类似，只不过返回表示给定索引的字符的Unicode的值。如果指定的 index 小于 0 或不小于字符串的长度，则 charCodeAt 返回 NaN。</span><br></pre></td></tr></table></figure></p>
+<p>“ABC”.charCodeAt(0) // returns 65:”A”</p>
+<p>“ABC”.charCodeAt(1) // returns 66:”B”</p>
+<p>“ABC”.charCodeAt(2) // returns 67:”C”</p>
+<p>“ABC”.charCodeAt(3) // returns NaN<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 2、indexOf() 和 lastIndexOf()</span><br><span class="line"></span><br><span class="line">indexOf()：从字符串对象中返回首个被发现的给定值的索引值，如果没有找到则返回-1。</span><br><span class="line"></span><br><span class="line">lastIndexOf()：从字符串对象中返回最后一个被发现的给定值的索引值，如果没有找到则返回-1。</span><br><span class="line"></span><br><span class="line">接收两个参数：第一个是需要搜索的子字符串，第二个是从字符串中的哪个位置开始搜索（可选）。</span><br></pre></td></tr></table></figure></p>
+<p>var str = “hello world”;</p>
+<p>console.log(str.indexOf(“l”)); //2<br>console.log(str.lastIndexOf(“l”)); //9</p>
+<p>console.log(str.indexOf(“l”,4)); //9<br>console.log(str.lastIndexOf(“l”,4)); //3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 3、concat()</span><br><span class="line"></span><br><span class="line">连接两个字符串文本，并返回一个新的字符串。</span><br></pre></td></tr></table></figure></p>
+<p>var hello = “Hello,”;<br>console.log(hello.concat(“good luck for you.”)); /<em> Hello,good luck for you. </em>/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">在实际应用中，最常用到的还是加号操作符“+”,或者es6模板字符串``</span><br></pre></td></tr></table></figure></p>
+<p>var a = “Hello,”;<br>var b = “good luck for you.”;<br>console.log(a+b); /<em> Hello,good luck for you. </em>/<br>console.log(<code>${a}${b}</code>); /<em> Hello,good luck for you. </em>/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 4、slice()、substr()、substring()</span><br><span class="line"></span><br><span class="line">#### stringObject.slice(start,end)</span><br><span class="line"></span><br><span class="line">摘取一个字符串区域，返回一个新的字符串。接收两个参数：第一个参数指定子字符串的开始位置，第二个参数指定的是子字符串最后一个字符后面的位置（如果没有指定第二个参数，则一直到字符串结尾）。该方法对原字符串没有影响。</span><br></pre></td></tr></table></figure></p>
+<p>var str = “hello world”;<br>console.log(str.slice(2)); //llo world<br>console.log(str.slice(2,8)); //llo wo</p>
+<p>console.log(str.slice(-9)); //llo world<br>console.log(str.slice(2,-3)); //llo wo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">当传入的参数为负数时，会将该负数加上字符串的长度转换成正数，再进行截取。如果传入的负数的绝对值大于字符串的长度，则用0替代。</span><br><span class="line"></span><br><span class="line">#### stringObject.substr(start,length)</span><br><span class="line"></span><br><span class="line">在字符串中抽取从 start 下标开始的指定数目的字符。</span><br><span class="line">- length如果省略了，那么返回从 stringObject 的开始位置到结尾的字串。</span><br></pre></td></tr></table></figure></p>
+<p>var str=”Hello world!”</p>
+<p>console.log(str.substr(3))   //lo world!<br>console.log(str.substr(3,4)) //lo w<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### stringObject.substring(start,stop)</span><br><span class="line"></span><br><span class="line">返回在字符串中指定两个下标之间的字符。只能接收非负的整数参数</span><br><span class="line">- substring() 方法返回的子串包括 start 处的字符，但不包括 stop 处的字符。</span><br><span class="line">- 如果参数 start 与 stop 相等，那么该方法返回的就是一个空串（即长度为 0 的字符串）。如果 start 比 stop 大，那么该方法在提取子串之前会先交换这两个参数。</span><br></pre></td></tr></table></figure></p>
+<p>var str=”Hello world!”</p>
+<p>console.log(str.substring(3))   //lo world!<br>console.log(str.substring(3,4)) //l<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; 注意：</span><br><span class="line">与 slice() 和 substr() 方法不同的是，substring() 不接受负的参数。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 5、trim()</span><br><span class="line">ES5新增方法，用来删除字符串前置及后缀的所有空格。</span><br></pre></td></tr></table></figure></p>
+<p>var str = “   hello world   “;<br>var strCopy = str.trim();<br>console.log(str); //“   hello world   “<br>console.log(strCopy); //“hello world”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 6、toLowerCase() 和 toUpperCase()</span><br><span class="line"></span><br><span class="line">- toLowerCase() ：将整个字符串转成小写字母。 </span><br><span class="line">- toUpperCase()：将整个字符串转成大写字母。</span><br><span class="line">- 还有两个方法：toLocaleLowerCase()和 toLocaleUpperCase()方法则是针对特定地区的实现。</span><br><span class="line">- 少数语言（如土耳其语）会为 Unicode 大小写转换应用特殊的规则，这时候就必须使用针对地区的方法来保证实现正确的转换。</span><br></pre></td></tr></table></figure></p>
+<p>var str = “HellO WoRlD”;<br>console.log(str.toLowerCase()); //hello world<br>console.log(str); //HellO WoRlD(原字符串不变)<br>console.log(str.toLocaleLowerCase()); //hello world</p>
+<p>console.log(str.toUpperCase()); //HELLO WORLD<br>console.log(str.toLocaleUpperCase()); // HELLO WORLD<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 7、match()</span><br><span class="line">match() 方法可在字符串内检索指定的值，或找到一个或多个正则表达式的匹配。</span><br></pre></td></tr></table></figure></p>
+<p>var myString = “welcome to my blog blog blog…”;<br>var myPattern = /.og/;<br>var myResult = myString.match(myPattern);<br>console.log(myResult);// [“log”, index: 15, input: “welcome to my blog blog blog…”]<br>console.log(myResult[0]); // “log”<br>console.log(myResult.index);// 15<br>console.log(myResult.input);// “welcome to my blog blog blog…”</p>
+<p>var myPattern2 = /.oog/;<br>var myResult2 = myString.match(myPattern2);<br>console.log(myResult2); //null<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 8、search()</span><br><span class="line">返回与正则表达式查找内容匹配的第一个字符串的位置。</span><br><span class="line">&gt; 与match()方法不同的是：search()方法只返回一个数值而不是一个数组。</span><br></pre></td></tr></table></figure></p>
+<p>var myString = “welcome to my blog blog blog…”;<br>var myPattern = /.og/;<br>var myResult = myString.search(myPattern);<br>console.log(myResult);// 15<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 9、replace()</span><br><span class="line">用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。</span><br></pre></td></tr></table></figure></p>
+<p>var str=”Mr Blue has a blue house and a blue car”;<br>var n=str.replace(/blue/g,”red”); //Mr Blue has a red house and a red car<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">忽略大小写</span><br></pre></td></tr></table></figure></p>
+<p>var str=”Mr Blue has a blue house and a blue car”;<br>var n=str.replace(/blue/gi, “red”);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">### 10、split()</span><br><span class="line">把一个字符串分割成字符串数组。</span><br></pre></td></tr></table></figure></p>
+<p>var str = “cat, bat, sat, fat”;<br>var strArr = str.split(“,”);<br>console.log(strArr); // [“cat”, “ bat”, “ sat”, “ fat”]<br>var strArr2 = str.split(“,”,2);<br>console.log(strArr2); // [“cat”, “ bat”]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 11、localeCompare()</span><br><span class="line">- 用本地特定的顺序来比较两个字符串</span><br><span class="line">- 比较两个字符串，并根据比较结果返回一个值。该方法接收一个参数，即要与之比较的字符串参数。</span><br><span class="line">- 如果字符串在字母表中应该排在字符串参数之前，则返回一个负数（大多数情况下是-1）</span><br><span class="line">- 如果字符串等于字符串参数，则返回 0；</span><br><span class="line">- 如果字符串在字母表中应该排在字符串参数之后，则返回一个正数（大多数情况下是 1）</span><br></pre></td></tr></table></figure></p>
+<p>var str = “sean”;<br>console.log(str.localeCompare(“lily”)); // 1<br>console.log(str.localeCompare(“sean”)); // 0<br>console.log(str.localeCompare(“Tom”));  // -1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 12、fromCharCode()</span><br><span class="line">接收一或多个字符编码，然后将它们转换成一个字符串。该方法是String 构造函数本身的静态方法。该方法与前面介绍的charCodeAt()方法作用正好相反。</span><br></pre></td></tr></table></figure></p>
+<p>console.log(String.fromCharCode(104, 101, 108, 108, 111)); //“hello”<br>```</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/19/chorme的Network面板简介/" rel="next" title="chorme的Network面板简介">
+                <i class="fa fa-chevron-left"></i> chorme的Network面板简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、charAt-和-charCodeAt"><span class="nav-number">1.</span> <span class="nav-text">1、charAt() 和 charCodeAt()</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
