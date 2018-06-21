@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/06/02/localStorage、sessionStorage、Cookie/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="localStoragelocalStorage生命周期是永久，这意味着除非用户显示在浏览器提供的UI上清除localStorage信息，否则这些信息将永远存在。存放数据大小为一般为5MB,而且它仅在客户端（即浏览器）中保存，不参与和服务器的通信。 sessionStoragesessionStorage仅在当前会话下有效，关闭页面或浏览器后被清除。存放数据大小为一般为5MB,而且它仅在客户端（即">
-<meta property="og:updated_time" content="2018-06-21T00:29:00.900Z">
+<meta property="og:updated_time" content="2018-06-21T00:54:49.183Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="localStorage、sessionStorage、Cookie">
 <meta name="twitter:description" content="localStoragelocalStorage生命周期是永久，这意味着除非用户显示在浏览器提供的UI上清除localStorage信息，否则这些信息将永远存在。存放数据大小为一般为5MB,而且它仅在客户端（即浏览器）中保存，不参与和服务器的通信。 sessionStoragesessionStorage仅在当前会话下有效，关闭页面或浏览器后被清除。存放数据大小为一般为5MB,而且它仅在客户端（即">
@@ -300,7 +300,50 @@
       
         <h2 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h2><p>localStorage生命周期是永久，这意味着除非用户显示在浏览器提供的UI上清除localStorage信息，否则这些信息将永远存在。存放数据大小为一般为5MB,而且它仅在客户端（即浏览器）中保存，不参与和服务器的通信。</p>
 <h2 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h2><p>sessionStorage仅在当前会话下有效，关闭页面或浏览器后被清除。存放数据大小为一般为5MB,而且它仅在客户端（即浏览器）中保存，不参与和服务器的通信。源生接口可以接受，亦可再次封装来对Object和Array有更好的支持。</p>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p>cookie非常小，它的大小限制为4KB左右。有个数限制（各浏览器不同），一般不能超过20个。与服务器端通信：每次都会携带在HTTP头中，如果使用cookie保存过多数据会带来性能问题。Cookie使用需要程序员自己封装。</p>
 <h2 id="localStorage和sessionStorage使用时使用相同的API："><a href="#localStorage和sessionStorage使用时使用相同的API：" class="headerlink" title="localStorage和sessionStorage使用时使用相同的API："></a>localStorage和sessionStorage使用时使用相同的API：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">localStorage.setItem(&quot;key&quot;,&quot;value&quot;);//以“key”为名称存储一个值“value”</span><br><span class="line"></span><br><span class="line">localStorage.getItem(&quot;key&quot;);//获取名称为“key”的值</span><br><span class="line"></span><br><span class="line">localStorage.removeItem(&quot;key&quot;);//删除名称为“key”的信息。</span><br><span class="line"></span><br><span class="line">localStorage.clear(); //清空localStorage中所有信息</span><br></pre></td></tr></table></figure>
+<h2 id="localStorage其他注意事项"><a href="#localStorage其他注意事项" class="headerlink" title="localStorage其他注意事项"></a>localStorage其他注意事项</h2><p>一般我们会将JSON存入localStorage中，但是在localStorage会自动将localStorage转换成为字符串形式.<br>可以使用JSON.stringify()这个方法，来将JSON转换成为JSON字符串;<br>读取之后要将JSON字符串转换成为JSON对象，使用JSON.parse()方法</p>
+<h2 id="三者的异同"><a href="#三者的异同" class="headerlink" title="三者的异同"></a>三者的异同</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">特性</th>
+<th style="text-align:left">Cookie</th>
+<th style="text-align:left">localStorage</th>
+<th style="text-align:left">sessionStorage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">数据的生命期</td>
+<td style="text-align:left">可设置失效时间，默认是关闭浏览器后失效</td>
+<td style="text-align:left">除非被清除，否则永久保存</td>
+<td style="text-align:left">仅在当前会话下有效，关闭页面或浏览器后被清除</td>
+</tr>
+<tr>
+<td style="text-align:left">存放数据大小</td>
+<td style="text-align:left">4K左右</td>
+<td style="text-align:left">一般为5MB</td>
+<td style="text-align:left">一般为5MB</td>
+</tr>
+<tr>
+<td style="text-align:left">与服务器端通信</td>
+<td style="text-align:left">每次都会携带在HTTP头中，如果使用cookie保存过多数据会带来性能问题</td>
+<td style="text-align:left">仅在客户端（即浏览器）中保存，不参与和服务器的通信</td>
+<td style="text-align:left">仅在客户端（即浏览器）中保存，不参与和服务器的通信</td>
+</tr>
+<tr>
+<td style="text-align:left">易用性</td>
+<td style="text-align:left">需要程序员自己封装，源生的Cookie接口不友好</td>
+<td style="text-align:left">源生接口可以接受，亦可再次封装来对Object和Array有更好的支持</td>
+<td style="text-align:left">源生接口可以接受，亦可再次封装来对Object和Array有更好的支持</td>
+</tr>
+</tbody>
+</table>
+<h2 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h2><p>需要注意的是，不是什么数据都适合放在 Cookie、localStorage 和 sessionStorage 中的。使用它们的时候，需要时刻注意是否有代码存在 XSS 注入的风险。因为只要打开控制台，你就随意修改它们的值，也就是说如果你的网站中有 XSS 的风险，它们就能对你的 localStorage 肆意妄为。所以千万不要用它们存储你系统中的敏感数据。</p>
+<blockquote>
+<p>XSS是一种在web应用中的计算机安全漏洞，它允许恶意web用户将代码植入到提供给其它用户使用的页面中。</p>
+</blockquote>
+
       
     </div>
     
@@ -446,7 +489,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#localStorage"><span class="nav-number">1.</span> <span class="nav-text">localStorage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sessionStorage"><span class="nav-number">2.</span> <span class="nav-text">sessionStorage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#localStorage和sessionStorage使用时使用相同的API："><span class="nav-number">3.</span> <span class="nav-text">localStorage和sessionStorage使用时使用相同的API：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#localStorage"><span class="nav-number">1.</span> <span class="nav-text">localStorage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sessionStorage"><span class="nav-number">2.</span> <span class="nav-text">sessionStorage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie"><span class="nav-number">3.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#localStorage和sessionStorage使用时使用相同的API："><span class="nav-number">4.</span> <span class="nav-text">localStorage和sessionStorage使用时使用相同的API：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#localStorage其他注意事项"><span class="nav-number">5.</span> <span class="nav-text">localStorage其他注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三者的异同"><span class="nav-number">6.</span> <span class="nav-text">三者的异同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全性"><span class="nav-number">7.</span> <span class="nav-text">安全性</span></a></li></ol></div>
             
 
           </div>
