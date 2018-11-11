@@ -228,6 +228,503 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/12/TortoiseGit使用小记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/12/TortoiseGit使用小记/" itemprop="url">TortoiseGit使用小记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-12T00:11:03+08:00">
+                2018-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>这是一篇多图博客，<a href="https://www.jianshu.com/p/cf0628478a4e" target="_blank" rel="noopener">便捷插入图片分享</a></p>
+</blockquote>
+<h2 id="TortoiseGit简介"><a href="#TortoiseGit简介" class="headerlink" title="TortoiseGit简介"></a>TortoiseGit简介</h2><p>tortoiseGit是一个开放的git版本控制系统的源客户端,该软件功能和git一样。<br>不同的是：git是命令行操作模式，tortoiseGit界面化操作模式。<br><a href="https://tortoisegit.org/download/" target="_blank" rel="noopener">下载</a></p>
+<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><p>1、下载所需版本，需要汉化的顺便下载第二个箭头指向的chinese,xxx，英语66的请忽略~~<br>点击安装，一直下一步即可，途中可能有那些配置什么什么的，先忽略，后面再配置</p>
+<img src="/2018/10/12/TortoiseGit使用小记/1.png" class="TortoiseGit使用小记.jpg">
+<p>语言包直接点击打开安装即可，然后就可以选择中文版了~</p>
+<img src="/2018/10/12/TortoiseGit使用小记/2.png" class="TortoiseGit使用小记.jpg">
+<p>可能会遇到git版本过低，重新安装覆盖即可<br><img src="/2018/10/12/TortoiseGit使用小记/3.png" class="TortoiseGit使用小记.jpg"><br><img src="/2018/10/12/TortoiseGit使用小记/4.png" class="TortoiseGit使用小记.jpg"></p>
+<p>到这里安装好了~接下来配置</p>
+<p>2、配置秘钥</p>
+<p><a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" target="_blank" rel="noopener">下载</a> PuttyGen:是一套可以产生密钥的工具;可以生成RSA或DSA密钥;用于Putty、Plink、PSFP、PSCP和Pageant.</p>
+<ul>
+<li><p>点击Generate生成密钥：<br><font color="#ff0606">注意：生成时鼠标要不停划过进度条，不然进度条会一直不动！ </font></p>
+<img src="/2018/10/12/TortoiseGit使用小记/5.png" class="TortoiseGit使用小记.jpg">
+</li>
+<li><p>先点击Save private key把私有的密钥存起来，记住存储的位置,后面会用到</p>
+<img src="/2018/10/12/TortoiseGit使用小记/6.png" class="TortoiseGit使用小记.jpg">
+</li>
+<li><p>把生成出来的public Key复制粘贴到Gitlab上面，配置SSH key</p>
+<img src="/2018/10/12/TortoiseGit使用小记/7.png" class="TortoiseGit使用小记.jpg">
+</li>
+<li><p>打开：开始–&gt;TortoiseGit–&gt;Pageant，打开以后右下角会有图标，双击点开蓝屏幕电脑那个图标<br><font color="#c35959">说明：使用TortoiseGit进行和远端输出项目时，Pageant必须启动且添加了对应的私钥。否则会报错 </font></p>
+<img src="/2018/10/12/TortoiseGit使用小记/8.png" class="TortoiseGit使用小记.jpg">
+<img src="/2018/10/12/TortoiseGit使用小记/9.png" class="TortoiseGit使用小记.jpg">
+</li>
+</ul>
+<p>到这里已经可以使用了~</p>
+<ul>
+<li>Pageant在git中主要负责和服务器端进行身份验证，但是每次在启动Pageant后都需要手动的加载秘钥文件，为了避免每次使用都要重复添加私钥，可以设置一下自动加载。</li>
+</ul>
+<p>(1)Pageant 的开机自启<br>首先找到TortoiseGit 的安装目录的bin目录，然后找到pageant.exe 然后单击右键 创建快捷方式，此时bin目录中有 两个pageant.exe 文件</p>
+<img src="/2018/10/12/TortoiseGit使用小记/10.png" class="TortoiseGit使用小记.jpg">
+<p>win10添加自启项：win+r =&gt; 输入：shell:startup =&gt;  将自启项的快捷方式丢进去即可</p>
+<img src="/2018/10/12/TortoiseGit使用小记/11.png" class="TortoiseGit使用小记.jpg">
+<p>win10查看自启项：win+r =&gt; 输入：msconfig =&gt; 启动-打开任务管理器-启动。<br>即可查看是否添加成功</p>
+<p>(2)关联加载秘钥ppk<br>在上面的开机自启文件夹下 选中pageant 的快捷方式 查看属性，在目标的一栏，前面是 pageant 程序的位置 ，在后面空格 然后粘贴ppk秘钥的路径（前面保存过的），然后点击确定就搞定了 </p>
+<img src="/2018/10/12/TortoiseGit使用小记/12.png" class="TortoiseGit使用小记.jpg">
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>大致功能如图：（每台电脑貌似会存在差异，）<br><img src="/2018/10/12/TortoiseGit使用小记/14.png" class="TortoiseGit使用小记.jpg"></p>
+<h4 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h4><p>空白文件夹右键 - Git克隆：<br>填入仓库地址<br><img src="/2018/10/12/TortoiseGit使用小记/13.png" class="TortoiseGit使用小记.jpg"></p>
+<h4 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h4><p>右键-切换切出-创建分支<br>右键-创建分支<br><img src="/2018/10/12/TortoiseGit使用小记/15.png" class="TortoiseGit使用小记.jpg"></p>
+<h4 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h4><img src="/2018/10/12/TortoiseGit使用小记/16.png" class="TortoiseGit使用小记.jpg">
+<img src="/2018/10/12/TortoiseGit使用小记/17.png" class="TortoiseGit使用小记.jpg">
+<img src="/2018/10/12/TortoiseGit使用小记/18.png" class="TortoiseGit使用小记.jpg">
+<img src="/2018/10/12/TortoiseGit使用小记/19.png" class="TortoiseGit使用小记.jpg">
+<img src="/2018/10/12/TortoiseGit使用小记/20.png" class="TortoiseGit使用小记.jpg">
+<p>。。。。还有很多功能呀，自己慢慢摸索~~~</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/10/快应用笔记之组件通信/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/10/快应用笔记之组件通信/" itemprop="url">快应用笔记之组件通信</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-10T11:02:56+08:00">
+                2018-09-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="一、父传子"><a href="#一、父传子" class="headerlink" title="一、父传子"></a>一、父传子</h1><h3 id="props"><a href="#props" class="headerlink" title="props"></a>props</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"># 父组件</span><br><span class="line">&lt;import name=&quot;comp-part1&quot; src=&quot;../Common/part&quot;&gt;&lt;/import&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;tutorial-page&quot;&gt;</span><br><span class="line">        &lt;text class=&quot;tutorial-title&quot;&gt;页面父组件：&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;&#123;&#123; data1 &#125;&#125;&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;&#123;&#123; data2.name &#125;&#125;&lt;/text&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;!-- 子组件参数传递 --&gt;</span><br><span class="line">        &lt;comp-part1 prop1=&quot;&#123;&#123;data1&#125;&#125;&quot; prop2-object=&quot;&#123;&#123;data2&#125;&#125;&quot;&gt;&lt;/comp-part1&gt;</span><br><span class="line">        </span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;less&quot;&gt;</span><br><span class="line">    .tutorial-page &#123;</span><br><span class="line">        flex-direction: column;</span><br><span class="line">        padding: 20px 10px;</span><br><span class="line">        .tutorial-title &#123;</span><br><span class="line">            font-weight: bold;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    // 父组件</span><br><span class="line">    export default &#123;</span><br><span class="line">        private: &#123;</span><br><span class="line">            data1: &apos;string&apos;,</span><br><span class="line">            data2: &#123;</span><br><span class="line">                name: &apos;object&apos;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"># 子组件</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;tutorial-page&quot;&gt;</span><br><span class="line">        &lt;text class=&quot;tutorial-title&quot;&gt;子组件:&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;&#123;&#123; prop1 &#125;&#125;&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;&#123;&#123; prop2Object.name &#125;&#125;&lt;/text&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;less&quot;&gt;</span><br><span class="line">    .tutorial-page &#123;</span><br><span class="line">        flex-direction: column;</span><br><span class="line">        padding-top: 20px;</span><br><span class="line">        .tutorial-title &#123;</span><br><span class="line">            font-weight: bold;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    // 子组件</span><br><span class="line">    export default &#123;</span><br><span class="line">      props: [</span><br><span class="line">        &apos;prop1&apos;,</span><br><span class="line">        &apos;prop2Object&apos;</span><br><span class="line">      ],</span><br><span class="line">      data: &#123;&#125;,</span><br><span class="line">      onInit () &#123;</span><br><span class="line">        console.info(`父组件传递下来的值：`, this.prop1, this.prop2Object)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="二、双向的事件传递"><a href="#二、双向的事件传递" class="headerlink" title="二、双向的事件传递"></a>二、双向的事件传递</h1><blockquote>
+<p>父子组件之间的事件触发：$broadcast()、$dispatch()、子组件$emit()节点绑定的事件</p>
+</blockquote>
+<h2 id="1-向下传递：父组件触发，子组件响应；调用parentVm-broadcast-完成向下传递，子组件-on-响应，如：evtType1"><a href="#1-向下传递：父组件触发，子组件响应；调用parentVm-broadcast-完成向下传递，子组件-on-响应，如：evtType1" class="headerlink" title="1.向下传递：父组件触发，子组件响应；调用parentVm.$broadcast()完成向下传递，子组件 $on 响应，如：evtType1"></a>1.向下传递：父组件触发，子组件响应；调用parentVm.$broadcast()完成向下传递，子组件 $on 响应，如：evtType1</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"># 父组件</span><br><span class="line">&lt;import name=&quot;comp-part1&quot; src=&quot;../Common/part&quot;&gt;</span><br><span class="line">&lt;/import&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;tutorial-page&quot;&gt;</span><br><span class="line">        &lt;text class=&quot;tutorial-title&quot;&gt;页面父组件：&lt;/text&gt;</span><br><span class="line">        &lt;text onclick=&quot;evtType1Emit&quot;&gt;触发$broadcast()，向下传递&lt;/text&gt;</span><br><span class="line">        &lt;!-- 子组件 --&gt;</span><br><span class="line">        &lt;comp-part1&gt;&lt;/comp-part1&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;less&quot;&gt;</span><br><span class="line">    .tutorial-page &#123;</span><br><span class="line">        flex-direction: column;</span><br><span class="line">        padding: 20px 10px;</span><br><span class="line">        .tutorial-title &#123;</span><br><span class="line">            font-weight: bold;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    // 父组件</span><br><span class="line">    export default &#123;</span><br><span class="line">        data: &#123;&#125;,</span><br><span class="line">        //触发$broadcast()</span><br><span class="line">        evtType1Emit () &#123;</span><br><span class="line">            this.$broadcast(&apos;evtType1&apos;, &#123; params: &apos;额外参数&apos;, channel: &apos;test&apos;&#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"># 子组件</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;tutorial-page&quot;&gt;</span><br><span class="line">        &lt;text class=&quot;tutorial-title&quot;&gt;子组件:&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;1、父组件触发子组件响应，子组件接收的参数 e.detail：&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;&#123;&#123; parentDate &#125;&#125;&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;2、e.type：&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;&#123;&#123; Etype &#125;&#125;&lt;/text&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;less&quot;&gt;</span><br><span class="line">    .tutorial-page &#123;</span><br><span class="line">        flex-direction: column;</span><br><span class="line">        padding-top: 20px;</span><br><span class="line">        .tutorial-title &#123;</span><br><span class="line">            font-weight: bold;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    // 子组件</span><br><span class="line">    export default &#123;</span><br><span class="line">        data: &#123;</span><br><span class="line">            parentDate: &apos;&apos;,</span><br><span class="line">            Etype: &apos;&apos;</span><br><span class="line">        &#125;,</span><br><span class="line">        onInit() &#123;</span><br><span class="line">            // 绑定VM的自定义事件 </span><br><span class="line">            //evtType1 要跟父组件 $broadcast 的对应一致</span><br><span class="line">            //responseEvent 子组件响应以后的操作</span><br><span class="line">            this.$on(&apos;evtType1&apos;, this.responseEvent )</span><br><span class="line">        &#125;,</span><br><span class="line">        responseEvent (e) &#123;</span><br><span class="line">            console.info(&apos;子组件evt&apos;, e)</span><br><span class="line">            console.info(`子组件：事件响应: `, e.type, e.detail)</span><br><span class="line">            console.info(`evt.detail.channel: `, e.detail.channel)</span><br><span class="line">            this.parentDate = JSON.stringify(e.detail);</span><br><span class="line">            this.Etype = JSON.stringify(e.type);</span><br><span class="line">            // 结束事件传递</span><br><span class="line">            // evt.stop()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="2-向上传递：子组件触发，父组件响应；调用childVm-dispath-完成向上传递，如：evtType2"><a href="#2-向上传递：子组件触发，父组件响应；调用childVm-dispath-完成向上传递，如：evtType2" class="headerlink" title="2.向上传递：子组件触发，父组件响应；调用childVm.$dispath()完成向上传递，如：evtType2"></a>2.向上传递：子组件触发，父组件响应；调用childVm.$dispath()完成向上传递，如：evtType2</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"># 子组件</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;tutorial-page&quot;&gt;</span><br><span class="line">        &lt;text class=&quot;tutorial-title&quot;&gt;子组件:&lt;/text&gt;</span><br><span class="line">        &lt;text onclick=&quot;evtType2Dispatch&quot;&gt;$dispatch触发向上传递&lt;/text&gt;</span><br><span class="line">        &lt;text onclick=&quot;evtType2Emit&quot;&gt;$emit触发向上传递&lt;/text&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;less&quot;&gt;</span><br><span class="line">    .tutorial-page &#123;</span><br><span class="line">        flex-direction: column;</span><br><span class="line">        padding-top: 20px;</span><br><span class="line">        .tutorial-title &#123;</span><br><span class="line">            font-weight: bold;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    // 子组件</span><br><span class="line">    export default &#123;</span><br><span class="line">        data: &#123;&#125;,</span><br><span class="line">        onInit() &#123;</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        evtType2Dispatch () &#123;</span><br><span class="line">            this.$dispatch(&apos;evtType2&apos;, &#123; params: &apos;$dispatch&apos;, respose: &apos;向上传递&apos; &#125;)</span><br><span class="line">        &#125;,</span><br><span class="line">        evtType2Emit () &#123;</span><br><span class="line">            this.$emit(&apos;evtType3&apos;, &#123; params: &apos;$emit&apos;, respose: &apos;向上传递&apos; &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"># 父组件</span><br><span class="line">&lt;import name=&quot;comp-part1&quot; src=&quot;../Common/part&quot;&gt;</span><br><span class="line">&lt;/import&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;tutorial-page&quot;&gt;</span><br><span class="line">        &lt;text class=&quot;tutorial-title&quot;&gt;页面父组件：&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;$dispatch: &#123;&#123; childData &#125;&#125;&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;$emit: &#123;&#123; childData2 &#125;&#125;&lt;/text&gt;</span><br><span class="line">        &lt;!-- 子组件 evt-type2 =&gt; evtType2 --&gt;</span><br><span class="line">        &lt;comp-part1 onevt-type2=&quot;parentResponse&quot; onevt-type3=&quot;parentResponse3&quot;&gt;&lt;/comp-part1&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;less&quot;&gt;</span><br><span class="line">    .tutorial-page &#123;</span><br><span class="line">        flex-direction: column;</span><br><span class="line">        padding: 20px 10px;</span><br><span class="line">        .tutorial-title &#123;</span><br><span class="line">            font-weight: bold;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    // 父组件</span><br><span class="line">    export default &#123;</span><br><span class="line">        data: &#123;</span><br><span class="line">            childData: &apos;&apos;,</span><br><span class="line">            childData2: &apos;&apos;</span><br><span class="line">        &#125;,</span><br><span class="line">        parentResponse(e) &#123;</span><br><span class="line">            console.log(`父组件事件响应1: `, e);</span><br><span class="line">            console.info(`父组件：事件响应: `, e.type, e.detail)</span><br><span class="line">            this.childData = JSON.stringify(e.detail)</span><br><span class="line">            // 结束事件传递</span><br><span class="line">            // evt.stop()</span><br><span class="line">        &#125;,</span><br><span class="line">        parentResponse3(e) &#123;</span><br><span class="line">            this.childData2 = JSON.stringify(e.detail)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="三、兄弟组件通信"><a href="#三、兄弟组件通信" class="headerlink" title="三、兄弟组件通信"></a>三、兄弟组件通信</h1><blockquote>
+<p>传统的兄弟等非父子组件之间通信，是通过Publish/Subscribe模型来完成。<br>开发者如果想要使用这样的能力，当然可以自己写一个Pub/Sub模型实现通信解耦；当然在业务逻辑相对简单的情况下，也可以使用ViewModel本身的事件绑定来处理：$on()，$emit()。</p>
+</blockquote>
+<p>子组件定义了Sub端的逻辑处理，有processMessage()、customEventInVm2()，后者同使用$on效果一致</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"># 组件2 part2</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;tutorial-page&quot;&gt;</span><br><span class="line">        &lt;text class=&quot;tutorial-title&quot;&gt;自定义组件2:&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;处理消息：&#123;&#123;msg&#125;&#125;&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;事件内容：&#123;&#123;eventDetail&#125;&#125;&lt;/text&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;less&quot;&gt;</span><br><span class="line">    .tutorial-page &#123;</span><br><span class="line">        flex-direction: column;</span><br><span class="line">        padding: 20px 10px;</span><br><span class="line">        .tutorial-title &#123;</span><br><span class="line">            font-weight: bold;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    // 子组件: part2</span><br><span class="line">    export default &#123;</span><br><span class="line">        props: [],</span><br><span class="line">        data() &#123;</span><br><span class="line">            return &#123;</span><br><span class="line">                msg: null,</span><br><span class="line">                eventDetail: null</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        processMessage(msg) &#123;</span><br><span class="line">            const now = (new Date).toISOString()</span><br><span class="line">            this.msg = `$&#123;now&#125;: $&#123;msg&#125;`</span><br><span class="line">        &#125;,</span><br><span class="line">        /**</span><br><span class="line">         * 通过events对象：绑定事件</span><br><span class="line">         */</span><br><span class="line">        events: &#123;</span><br><span class="line">            customEventInVm2(evt) &#123;</span><br><span class="line">                const now = (new Date).toISOString()</span><br><span class="line">                this.eventDetail = `$&#123;now&#125;: $&#123;evt.detail&#125;`</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>另外一个兄弟组件可以通过父组件中建立相互引用达到相互持有ViewModel的目的，通过在生命周期onReady()中执行establishRef()实现，如下代码所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"># 父组件</span><br><span class="line">&lt;import name=&quot;comp-part2&quot; src=&quot;../Common/part2&quot;&gt;&lt;/import&gt;</span><br><span class="line">&lt;import name=&quot;comp-part3&quot; src=&quot;../Common/part3&quot;&gt;&lt;/import&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;tutorial-page&quot;&gt;</span><br><span class="line">        &lt;!-- 兄弟VM通信 --&gt;</span><br><span class="line">        &lt;comp-part2 id=&quot;sibling2&quot;&gt;&lt;/comp-part2&gt;</span><br><span class="line">        &lt;comp-part3 id=&quot;sibling3&quot;&gt;&lt;/comp-part3&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;text @click=&quot;pppp&quot;&gt;父组件调用子组件方法&lt;/text&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;less&quot;&gt;</span><br><span class="line">    .tutorial-page &#123;</span><br><span class="line">        flex-direction: column;</span><br><span class="line">        padding: 20px 10px;</span><br><span class="line">        .tutorial-title &#123;</span><br><span class="line">            font-weight: bold;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    // 父组件</span><br><span class="line">    export default &#123;</span><br><span class="line">        onReady() &#123;</span><br><span class="line">            this.establishRef()</span><br><span class="line">        &#125;,</span><br><span class="line">        /**</span><br><span class="line">         * 建立相互VM的引用</span><br><span class="line">         */</span><br><span class="line">        establishRef() &#123;</span><br><span class="line">            const siblingVm2 = this.$vm(&apos;sibling2&apos;) </span><br><span class="line">            const siblingVm3 = this.$vm(&apos;sibling3&apos;)</span><br><span class="line">            console.info(siblingVm2)</span><br><span class="line">            console.info(siblingVm3)</span><br><span class="line">            siblingVm2.parentVm = this </span><br><span class="line">            siblingVm2.part2 = siblingVm3 //将组件3整个赋值给组件2的part2属性，打印可以看到part2属性内部就拥有组件3定义的一些方法</span><br><span class="line">            siblingVm3.parentVm = this</span><br><span class="line">            siblingVm3.part3 = siblingVm2 //将组件2整个赋值给组件3的part3属性</span><br><span class="line">        &#125;,</span><br><span class="line">        pppp() &#123;</span><br><span class="line">            this.$vm(&apos;sibling2&apos;).processMessage();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>this.$vm(id)可以获取到组件的属性跟方法</p>
+</blockquote>
+<p>那么另外一个子组件的Pub端定义就很简单了，执行sendMesssage()即可完成触发，如下代码所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"># 子组件 part3</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;tutorial-page&quot;&gt;</span><br><span class="line">        &lt;text class=&quot;tutorial-title&quot;&gt;自定义组件3:&lt;/text&gt;</span><br><span class="line">        &lt;text onclick=&quot;sendMesssage&quot;&gt;点击发送消息&lt;/text&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;less&quot;&gt;</span><br><span class="line">    .tutorial-page &#123;</span><br><span class="line">        flex-direction: column;</span><br><span class="line">        padding: 20px 10px;</span><br><span class="line">        .tutorial-title &#123;</span><br><span class="line">            font-weight: bold;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    // 子组件: part3</span><br><span class="line">    export default &#123;</span><br><span class="line">        sendMesssage() &#123;</span><br><span class="line">            // 父组件中把组件2赋值在 part3下</span><br><span class="line">            if (this.part3) &#123;</span><br><span class="line">                // Way1. 调用方法</span><br><span class="line">                this.part3.processMessage(&apos;兄弟之间通信的消息内容&apos;)</span><br><span class="line">                // Way2. 触发事件</span><br><span class="line">                this.part3.$emit(&apos;customEventInVm2&apos;, &apos;兄弟之间通信的消息内容&apos;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/19/css变量/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/19/css变量/" itemprop="url">css变量</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-19T23:12:08+08:00">
+                2018-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h1><p>CSS中原生的变量定义语法是：– <em> ，变量使用语法是：var(– </em> `   )，其中*表示我们的变量名称。变量名称没有限制（不能包含$，[，^，(，%等字符）。</p>
+<ul>
+<li>声明一个局部变量：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">element &#123;</span><br><span class="line">  --main-bg-color: brown;</span><br><span class="line">  --1: #fff;</span><br><span class="line">  --红色: red;</span><br><span class="line">  --붉은: green;</span><br><span class="line">  --_color1: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>声明一个 全局 CSS 变量：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:root &#123;</span><br><span class="line">  --global-color: #666;</span><br><span class="line">  --pane-padding: 5px 42px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>:root 这个 CSS 伪类匹配文档树的根元素。对于 HTML 来说，:root 表示 <html> 元素，除了优先级更高之外，与 html 选择器相同。</html></p>
+</blockquote>
+<ul>
+<li>使用</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">element &#123;</span><br><span class="line">  background-color: var(--main-bg-color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h1><ul>
+<li><p>同一个 CSS变量，可以在多个选择器内声明。读取的时候，优先级最高的声明生效。这与 CSS 的”层叠”规则是一致的。</p>
+</li>
+<li><p>CSS 变量是支持继承的</p>
+</li>
+<li><p>通俗一点就是局部变量会在作用范围内覆盖全局变量。</p>
+</li>
+<li><p>CSS变量并不支持 !important 声明。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">:root &#123; --color: blue; &#125;</span><br><span class="line">div &#123; --color: pink; &#125;</span><br><span class="line">#purple &#123; --color: purple; &#125;</span><br><span class="line">* &#123; color: var(--color); &#125;</span><br><span class="line">    </span><br><span class="line">&lt;p&gt;蓝色继承于根元素&lt;/p&gt;</span><br><span class="line">&lt;div&gt;粉色来自直接设置&lt;/div&gt;</span><br><span class="line">&lt;div id=&apos;purple&apos;&gt;</span><br><span class="line">    ID选择器权重更高，紫色</span><br><span class="line">    &lt;p&gt;继承了紫色&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<font color="#0000ff"> 蓝色继承于根元素 </font>
+
+<font color="#f7b2be"> 粉色来自直接设置 </font>
+
+<font color="#f30ad6">ID选择器权重更高，紫色</font>
+
+<font color="#f30ad6">继承了紫色</font>
+
+<p>总结：</p>
+<ul>
+<li>变量的作用域就是它所在的选择器的有效范围。</li>
+<li>覆盖规则由CSS选择器的权重决定</li>
+</ul>
+<h1 id="CSS变量完整语法"><a href="#CSS变量完整语法" class="headerlink" title="CSS变量完整语法"></a>CSS变量完整语法</h1><p>var( [, ]? )，用中文表示就是：var( &lt;自定义属性名&gt; [, &lt;默认值 ]? )，</p>
+<p>1、变量未定义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">p &#123;</span><br><span class="line">    color: var(--color, red)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;我是默认值颜色：红色&lt;/p&gt;</span><br></pre></td></tr></table></figure></p>
+<p>效果：<font color="#f70404">变量未定义,我是默认值颜色：红色</font></p>
+<p>2、CSS变量不合法的缺省特性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">body&#123;</span><br><span class="line">    color: blue;</span><br><span class="line">&#125;</span><br><span class="line">p &#123;</span><br><span class="line">    --color: 20px;</span><br><span class="line">    color: var(--color, red)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;变量不合法，颜色为蓝色&lt;/p&gt;</span><br></pre></td></tr></table></figure></p>
+<p>效果：<font color="#0000ff">变量不合法，颜色为蓝色</font></p>
+<h1 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h1><p>1、CSS变量值是数值，不能与数值单位直接连用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p &#123;</span><br><span class="line">  --size: 20;   </span><br><span class="line">  font-size: var(--size)px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>此处font-size:var(–size)px等同于font-size:20 px，注意,20后面有个空格。</p>
+<p>或者用css3的calc：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">font-size: calc(var(--size) * 1px);</span><br></pre></td></tr></table></figure></p>
+<p>2、css变量为字符串的组合使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">:root&#123;</span><br><span class="line">  --word:&quot;this&quot;;</span><br><span class="line">  --word-second:&quot;is&quot;;</span><br><span class="line">  --word-third:&quot;CSS Variable&quot;;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">div::before&#123;</span><br><span class="line">  content:var(--word)&apos; &apos;var(--word-second)&apos; &apos;var(--word-third);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://codepen.io/zzzxuan/pen/vzNeWa" target="_blank" rel="noopener">戳</a></p>
+<h1 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h1><p>可以在响应式布局的media命令里面声明变量，使得不同的屏幕宽度有不同的变量值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">css:</span><br><span class="line"></span><br><span class="line">:root&#123;</span><br><span class="line">    --columns: 4;</span><br><span class="line">    --margins: calc(24px / var(--columns));</span><br><span class="line">    --space: calc(4px * var(--columns));</span><br><span class="line">    --fontSize: calc(20px - 4 / var(--columns));</span><br><span class="line">&#125;</span><br><span class="line">.box&#123;</span><br><span class="line">    background-color: aquamarine;</span><br><span class="line">    width: 50%;</span><br><span class="line">    min-width: 320px;</span><br><span class="line">    margin: auto;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">&#125;</span><br><span class="line">.cell&#123;</span><br><span class="line">    width: calc((100% - var(--margins) * var(--columns) * 2) / var(--columns));</span><br><span class="line">    margin: var(--margins);</span><br><span class="line">    background-color: #f0f3f9;</span><br><span class="line">    float: left;</span><br><span class="line">&#125;</span><br><span class="line">main &#123;</span><br><span class="line">    height: 150px;</span><br><span class="line">    padding: var(--space);</span><br><span class="line">    font-size: var(--fontSize);</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 1200px) &#123;</span><br><span class="line">    .box &#123;</span><br><span class="line">        --columns: 3;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@media screen and (max-width: 900px) &#123;</span><br><span class="line">    .box &#123;</span><br><span class="line">        --columns: 2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@media screen and (max-width: 600px) &#123;</span><br><span class="line">    .box &#123;</span><br><span class="line">        --columns: 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">html:</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;box&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;</span><br><span class="line">        &lt;main&gt;内容&lt;/main&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;</span><br><span class="line">        &lt;main&gt;内容&lt;/main&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;</span><br><span class="line">        &lt;main&gt;内容&lt;/main&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;</span><br><span class="line">        &lt;main&gt;内容&lt;/main&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;</span><br><span class="line">        &lt;main&gt;内容&lt;/main&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;</span><br><span class="line">        &lt;main&gt;内容&lt;/main&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p><a href="https://codepen.io/zzzxuan/pen/oPNWva" target="_blank" rel="noopener">戳</a></p>
+<h1 id="JavaScript-操作"><a href="#JavaScript-操作" class="headerlink" title="JavaScript 操作"></a>JavaScript 操作</h1><p>JavaScript 也可以检测浏览器是否支持 CSS 变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const isSupported =</span><br><span class="line">  window.CSS &amp;&amp;</span><br><span class="line">  window.CSS.supports &amp;&amp;</span><br><span class="line">  window.CSS.supports(&apos;--a&apos;, 0);</span><br><span class="line"></span><br><span class="line">if (isSupported) &#123;</span><br><span class="line">  /* supported */</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  /* not supported */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 设置变量</span><br><span class="line">document.body.style.setProperty(&apos;--primary&apos;, &apos;#7F583F&apos;);</span><br><span class="line"></span><br><span class="line">// 读取变量</span><br><span class="line">const rootStyles = getComputedStyle(document.documentElement);</span><br><span class="line">const varValue = String(rootStyles.getPropertyValue(&apos;--primary&apos;)).trim();</span><br><span class="line">// &apos;#7F583F&apos;</span><br><span class="line"></span><br><span class="line">// 删除变量</span><br><span class="line">document.body.style.removeProperty(&apos;--primary&apos;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>JavaScript 可以将任意值存入样式表</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const docStyle = document.documentElement.style;</span><br><span class="line"></span><br><span class="line">document.addEventListener(&apos;mousemove&apos;, (e) =&gt; &#123;</span><br><span class="line">  docStyle.setProperty(&apos;--mouse-x&apos;, e.clientX);</span><br><span class="line">  docStyle.setProperty(&apos;--mouse-y&apos;, e.clientY);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>getComputedStyle方法获取的是最终应用在元素上的所有CSS属性对象(即使没有CSS代码，也会把默认的祖宗八代都显示出来)，只读</p>
+</blockquote>
+<h1 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h1><p><img src="https://mmc-forecast.oss-cn-shanghai.aliyuncs.com/images/467f9d12b7cc9d-2500x1060.png" alt="image"></p>
+<h1 id="兼容性处理"><a href="#兼容性处理" class="headerlink" title="兼容性处理"></a>兼容性处理</h1><p>对于不支持 CSS 变量的浏览器，可以采用下面的写法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a &#123;</span><br><span class="line">  color: #7F583F;</span><br><span class="line">  color: var(--primary);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也可以使用@support命令进行检测。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@supports ( (--a: 0)) &#123;</span><br><span class="line">  /* supported */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@supports ( not (--a: 0)) &#123;</span><br><span class="line">  /* not supported */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="与传统-LESS-、SASS-等预处理器变量比较"><a href="#与传统-LESS-、SASS-等预处理器变量比较" class="headerlink" title="与传统 LESS 、SASS 等预处理器变量比较"></a>与传统 LESS 、SASS 等预处理器变量比较</h1><p>1、CSS 变量的动态性，能在页面运行时更改，而传统预处理器变量编译后无法更改</p>
+<p>2、CSS 变量能够继承，能够组合使用，具有作用域</p>
+<p>3、配合 Javascript 使用，可以方便的从 JS 中读/写</p>
+<h1 id="有趣的用法"><a href="#有趣的用法" class="headerlink" title="有趣的用法"></a>有趣的用法</h1><p>。。。</p>
+<p><a href="https://developers.google.com/web/updates/2016/02/css-variables-why-should-you-care" target="_blank" rel="noopener">参考链接</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/21/浏览器对象模型 (BOM)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -300,7 +797,7 @@
         
           
             <p>浏览器对象模型(Browser Object Model,BOM)：浏览器为js提供的对象集合。</p>
-<h1 id="window"><a href="#window" class="headerlink" title="window"></a>window</h1><p>Window 对象表示浏览器中打开的窗口。windows对象是个全局对象，他不需要使用名称访问自己的属性和方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//下面的代码本质是相同的</span><br><span class="line">alert(&quot;hello!&quot;);</span><br><span class="line"> </span><br><span class="line">window.alert(&quot;hello!&quot;);</span><br></pre></td></tr></table></figure></p>
+<h1 id="window"><a href="#window" class="headerlink" title="window"></a>window</h1><p>window对象表示浏览器中打开的窗口。windows对象是个全局对象，他不需要使用名称访问自己的属性和方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//下面的代码本质是相同的</span><br><span class="line">alert(&quot;hello!&quot;);</span><br><span class="line"> </span><br><span class="line">window.alert(&quot;hello!&quot;);</span><br></pre></td></tr></table></figure></p>
 <p>如果文档包含框架（&lt; frame &gt; 或 &lt; iframe &gt; 标签），浏览器会为 HTML 文档创建一个 window 对象，并为每个框架创建一个额外的 window 对象。</p>
 <h2 id="window-尺寸"><a href="#window-尺寸" class="headerlink" title="window 尺寸"></a>window 尺寸</h2><ul>
 <li>window.innerHeight - 浏览器窗口的内部高度</li>
@@ -1895,725 +2392,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/21/video标签使用小总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/21/video标签使用小总结/" itemprop="url">video标签使用小总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-21T09:18:45+08:00">
-                2017-11-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>属性</li>
-<li>方法</li>
-<li>事件</li>
-</ul>
-<h3 id="1-示例："><a href="#1-示例：" class="headerlink" title="1. 示例："></a>1. 示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;video src=&quot;movie.ogg&quot; controls=&quot;controls&quot;&gt;</span><br><span class="line">    您的浏览器不支持 video 标签。</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;video width=&quot;320&quot; height=&quot;240&quot; controls&gt;</span><br><span class="line">    &lt;source src=&quot;movie.mp4&quot; type=&quot;video/mp4&quot;&gt;</span><br><span class="line">    &lt;source src=&quot;movie.ogg&quot; type=&quot;video/ogg&quot;&gt;</span><br><span class="line">    您的浏览器不支持 video 标签。</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure>
-<p>ps：<track> 标签用于规定字幕文件或其他包含文本的文件，当媒介播放时，这些文件是可见的。不过主流浏览器基本不支持所以不总结。</p>
-<h3 id="2-标签属性"><a href="#2-标签属性" class="headerlink" title="2. 标签属性"></a>2. 标签属性</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">属性</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">autoplay</td>
-<td style="text-align:center">视频加载完马上播放</td>
-</tr>
-<tr>
-<td style="text-align:center">controls</td>
-<td style="text-align:center">显示控件（用户可操作）</td>
-</tr>
-<tr>
-<td style="text-align:center">loop</td>
-<td style="text-align:center">重复播放</td>
-</tr>
-<tr>
-<td style="text-align:center">muted</td>
-<td style="text-align:center">视频的音频输出为静音</td>
-</tr>
-<tr>
-<td style="text-align:center">poster</td>
-<td style="text-align:center">规定视频正在下载时显示的图像，直到用户点击播放按钮</td>
-</tr>
-<tr>
-<td style="text-align:center">preload</td>
-<td style="text-align:center">none:不预载， metadata:预载资源信息， auto:</td>
-</tr>
-<tr>
-<td style="text-align:center">src</td>
-<td style="text-align:center">视频的URL</td>
-</tr>
-<tr>
-<td style="text-align:center">height</td>
-<td style="text-align:center">视频播放器的高度</td>
-</tr>
-<tr>
-<td style="text-align:center">width</td>
-<td style="text-align:center">视频播放器的宽度</td>
-</tr>
-</tbody>
-</table>
-<h3 id="2-1-video对象属性"><a href="#2-1-video对象属性" class="headerlink" title="2.1 video对象属性"></a>2.1 video对象属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var Media = document.getElementById(&quot;myVideo&quot;);</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>说明</th>
-<th>示例</th>
-<th>注意</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>src</td>
-<td>设置或返回视频的 src 属性值。</td>
-<td>Media.src=src</td>
-<td>-</td>
-</tr>
-<tr>
-<td>currentSrc</td>
-<td>获得当前视频的 URL</td>
-<td>Media.currentSrc</td>
-<td>(只读)</td>
-</tr>
-<tr>
-<td>currentTime</td>
-<td>当前播放时间，单位为秒。为其赋值将会使媒体跳到一个新的时间。</td>
-<td>Media.currentTime</td>
-<td>-</td>
-</tr>
-<tr>
-<td>duration</td>
-<td>返回当前视频的长度</td>
-<td>Media.duration</td>
-<td>(只读)不同的浏览器返回不同的值</td>
-</tr>
-<tr>
-<td>buffered</td>
-<td>返回 TimeRanges 对象(表示用户的音视频缓冲范围)。</td>
-<td>Media.buffered.start(0)/Media.buffered.end(0)</td>
-<td>缓冲范围指的是已缓冲音视频的时间范围。如果用户在音视频中跳跃播放，会得到多个缓冲范围</td>
-</tr>
-<tr>
-<td>ended</td>
-<td>返回视频是否已结束</td>
-<td>Media.ended</td>
-<td>返回true/false</td>
-</tr>
-<tr>
-<td>error</td>
-<td>获得视频的错误状态</td>
-<td>Media.error.code</td>
-<td>(只读)1.用户终止 2.网络错误 3.解码错误 4.URL无效</td>
-</tr>
-<tr>
-<td>paused</td>
-<td>返回视频是否已暂停</td>
-<td>Media.paused</td>
-<td>(只读)返回true/false</td>
-</tr>
-<tr>
-<td>seeking</td>
-<td>属性返回用户目前是否在音频/视频中寻址。寻址中（Seeking）指的是用户在音频/视频中移动/跳跃到新的位置。</td>
-<td>-</td>
-<td>(只读)返回true/false</td>
-</tr>
-<tr>
-<td>volume</td>
-<td>设置或返回视频的当前音量</td>
-<td>Media.volume/Media.volume=number</td>
-<td>number必须是介于 0.0 与 1.0 之间的数字。1默认（最高音量）</td>
-</tr>
-<tr>
-<td>networkState</td>
-<td>返回音频/视频的当前网络状态</td>
-<td>Media.networkState</td>
-<td>0.此元素未初始化 1.正常但没有使用网络 2.正在下载数据 3.没有找到资源</td>
-</tr>
-<tr>
-<td>defaultPlaybackRate</td>
-<td>设置或返回音频的默认播放速度</td>
-<td>Media.defaultPlaybackRate/Media.defaultPlaybackRate=number</td>
-<td>正常速度：1.0；设置该属性仅会改变默认的播放速度，而不是当前的。</td>
-</tr>
-<tr>
-<td>playbackRate</td>
-<td>设置或返回视频的当前播放速度。</td>
-<td>Media.playbackRate/Media.playbackRate=playbackspeed</td>
-<td>默认速度1.0</td>
-</tr>
-<tr>
-<td>readyState</td>
-<td>返回视频的当前就绪状态。</td>
-<td>Media.readyState</td>
-<td>0-没有关于音频/视频是否就绪的信息;1-关于音频/视频就绪的元数据;2-关于当前播放位置的数据是可用的，但没有足够的数据来播放下一帧/毫秒;3当前及至少下一帧的数据是可用的；4- 可用数据足以开始播放</td>
-</tr>
-</tbody>
-</table>
-<p>ps：有些属性支持性不是很好就不总结，例如：defaultMuted </p>
-<h3 id="3-方法"><a href="#3-方法" class="headerlink" title="3. 方法"></a>3. 方法</h3><table>
-<thead>
-<tr>
-<th>方法</th>
-<th>说明</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>play()</td>
-<td>播放</td>
-<td>Media.play()</td>
-</tr>
-<tr>
-<td>pause()</td>
-<td>暂停</td>
-<td>Media.pause()</td>
-</tr>
-<tr>
-<td>load()</td>
-<td>重新加载音频/视频元素(在更改来源或其他设置后对音频/视频元素进行更新)</td>
-<td>Media.src = “movie.ogg”; Media.load();</td>
-</tr>
-<tr>
-<td>canPlayType()</td>
-<td>是否能播放某种格式的资源</td>
-<td>返回值：”probably” - 最有可能支持；”maybe” - 可能支持；”” - （空字符串）不支持</td>
-</tr>
-</tbody>
-</table>
-<h3 id="4-事件"><a href="#4-事件" class="headerlink" title="4. 事件"></a>4. 事件</h3><p>（总结几个比较常用的事件）</p>
-<p>语法举例（其他类似）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;video onplay=&quot;myScript&quot;&gt;</span><br><span class="line"></span><br><span class="line">video.onplay=function()&#123;myScript&#125;;</span><br><span class="line"></span><br><span class="line">video.addEventListener(&quot;play&quot;, myScript);</span><br></pre></td></tr></table></figure></p>
-<table>
-<thead>
-<tr>
-<th>事件</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>play</td>
-<td>在音频/视频(audio/video)开始播放时触发。</td>
-</tr>
-<tr>
-<td>playing</td>
-<td>在音频/视频(audio/video)因缓冲而暂停或停止后已就绪时触发。</td>
-</tr>
-<tr>
-<td>pause</td>
-<td>在音频/视频(audio/video)暂停时触发。</td>
-</tr>
-<tr>
-<td>ended</td>
-<td>在音频/视频(audio/video)播放完成后触发。</td>
-</tr>
-<tr>
-<td>waiting</td>
-<td>在视频由于需要缓冲下一帧而停止时触发。</td>
-</tr>
-<tr>
-<td>timeupdate</td>
-<td>音频/视频（audio/video）的播放位置发生改变时触发。（移动视频播放位置可调用）</td>
-</tr>
-<tr>
-<td>error</td>
-<td>在音频/视频(audio/video)加载发生错误时触发。</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>当音频/视频处于加载过程中时，会依次发生以下事件：</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>事件</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>loadstart</td>
-<td>当加载过程开始时</td>
-</tr>
-<tr>
-<td>durationchange</td>
-<td>当指定音频/视频的时长数据发生变化时，会发生durationchange 事件。</td>
-</tr>
-<tr>
-<td>loadedmetadata</td>
-<td>当指定的音频/视频的元数据（时长、尺寸（仅视频）以及文本轨道）已加载时，会发生 loadedmetadata 事件。</td>
-</tr>
-<tr>
-<td>loadeddata</td>
-<td>当当前帧的数据已加载，但没有足够的数据来播放指定音频/视频的下一帧时，会发生 loadeddata 事件。</td>
-</tr>
-<tr>
-<td>progress</td>
-<td>当浏览器正在下载指定的音频/视频时，会发生 progress 事件。</td>
-</tr>
-<tr>
-<td>canplay</td>
-<td>当浏览器能够开始播放指定的音频/视频时</td>
-</tr>
-<tr>
-<td>canplaythrough</td>
-<td>当浏览器预计能够在不停下来进行缓冲的情况下持续播放指定的音频/视频时，会发生 canplaythrough 事件。</td>
-</tr>
-</tbody>
-</table>
-<p>走过路过别错过，批评好评都接受，哈哈哈哈哈哈哈~~</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/06/DOM小总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/06/DOM小总结/" itemprop="url">DOM小总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-06T09:18:45+08:00">
-                2017-11-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="1、基本概念"><a href="#1、基本概念" class="headerlink" title="1、基本概念"></a>1、基本概念</h1><h2 id="1-1、DOM"><a href="#1-1、DOM" class="headerlink" title="1.1、DOM"></a>1.1、DOM</h2><p>DOM是JavaScript操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个JavaScript对象，从而可以用脚本进行各种操作（比如增删内容）。</p>
-<p>浏览器会根据DOM模型，将结构化文档（比如HTML和XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。</p>
-<h2 id="1-2、节点"><a href="#1-2、节点" class="headerlink" title="1.2、节点"></a>1.2、节点</h2><p>DOM的最小组成单位叫做节点（node）。文档的树形结构（DOM树），就是由各种不同类型的节点组成。每个节点可以看作是文档树的一片叶子。<br>（==看图 go==）</p>
-<blockquote>
-<p>根据 W3C 的 HTML DOM 标准，HTML 文档中的所有内容都是节点：</p>
-</blockquote>
-<ul>
-<li>整个文档是一个文档节点</li>
-<li>每个 HTML 元素是元素节点</li>
-<li>HTML 元素内的文本是文本节点</li>
-<li>每个 HTML 属性是属性节点</li>
-<li>注释是注释节点</li>
-</ul>
-<h2 id="1-3、DOM节点信息"><a href="#1-3、DOM节点信息" class="headerlink" title="1.3、DOM节点信息"></a>1.3、DOM节点信息</h2><h3 id="（1）节点类型（nodeType）、节点名称（nodeName）"><a href="#（1）节点类型（nodeType）、节点名称（nodeName）" class="headerlink" title="（1）节点类型（nodeType）、节点名称（nodeName）"></a>（1）节点类型（nodeType）、节点名称（nodeName）</h3><p> nodeType属性返回节点类型的常数值；nodeName返回当前节点的节点名称</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>nodeType</th>
-<th>nodeName</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td> Node.ELEMENT_NODE</td>
-<td>1</td>
-<td>大写的HTML元素名（标签）</td>
-</tr>
-<tr>
-<td> Node.TEXT_NODE</td>
-<td>3</td>
-<td>#text</td>
-</tr>
-<tr>
-<td> Node.PROCESSING_INSTRUCTION_NODE</td>
-<td>7</td>
-<td>一个用于XML文档的 ProcessingInstruction ，例如 &lt;?xml-stylesheet … ?&gt; 声明。</td>
-</tr>
-<tr>
-<td> Node.COMMENT_NODE</td>
-<td>8</td>
-<td>#comment （注释节点）</td>
-</tr>
-<tr>
-<td> Node.DOCUMENT_NODE</td>
-<td>9</td>
-<td>#document（文档节点）</td>
-</tr>
-<tr>
-<td> Node.DOCUMENT_TYPE_NODE</td>
-<td>10</td>
-<td>描述文档类型的 DocumentType 节点。例如 &lt;!DOCTYPE html&gt;  就是用于 HTML5 的。等同于DocumentType.name</td>
-</tr>
-<tr>
-<td> Node.DOCUMENT_FRAGMENT_NODE</td>
-<td>11</td>
-<td>#document-fragment，一个 DocumentFragment 节点（文档的片段）</td>
-</tr>
-</tbody>
-</table>
-<p><strong>备注：</strong> 另外还有五种节点类型已弃用</p>
-<p>参考： <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeType" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeType</a></p>
-<blockquote>
-<p>下表列出了所有类型的节点的nodeName属性的值. （看看就好。。）</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>接口</th>
-<th>nodeName属性值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Attr</td>
-<td>等同于 Attr.name 属性的值</td>
-</tr>
-<tr>
-<td>CDATASection</td>
-<td>“#cdata-section”</td>
-</tr>
-<tr>
-<td>Comment</td>
-<td>“#comment”</td>
-</tr>
-<tr>
-<td>Document</td>
-<td>“#document”</td>
-</tr>
-<tr>
-<td>DocumentFragment</td>
-<td>“#document-fragment”</td>
-</tr>
-<tr>
-<td>DocumentType</td>
-<td>等同于 DocumentType.name 属性的值</td>
-</tr>
-<tr>
-<td>Element</td>
-<td>等同于 Element.tagName 属性的值</td>
-</tr>
-<tr>
-<td>Entity</td>
-<td>实体名称</td>
-</tr>
-<tr>
-<td>EntityReference</td>
-<td>实体引用名称</td>
-</tr>
-<tr>
-<td>Notation</td>
-<td>Notation名称</td>
-</tr>
-<tr>
-<td>ProcessingInstruction</td>
-<td>等同于 ProcessingInstruction.target 属性的值</td>
-</tr>
-<tr>
-<td>text</td>
-<td>“#text”</td>
-</tr>
-</tbody>
-</table>
-<p><strong>栗子：</strong></p>
-<p>使用nodeType属性确定一个节点的类型，比较方便。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">document.querySelector(&apos;a&apos;).nodeType === 1</span><br><span class="line">// true</span><br><span class="line"></span><br><span class="line">document.querySelector(&apos;a&apos;).nodeType === Node.ELEMENT_NODE</span><br><span class="line">// true</span><br></pre></td></tr></table></figure>
-<p>ps：querySelector() 方法返回文档中匹配指定 CSS 选择器的一个元素。</p>
-<h3 id="（2）节点值（nodeValue）"><a href="#（2）节点值（nodeValue）" class="headerlink" title="（2）节点值（nodeValue）"></a>（2）节点值（nodeValue）</h3><p>Node.nodeValue属性返回一个字符串，表示当前节点本身的文本值，该属性可读写。</p>
-<p>由于只有Text节点、Comment节点、XML文档的CDATA节点有文本值，因此只有这三类节点的nodeValue可以返回结果，其他类型的节点一律返回null。同样的，也只有这三类节点可以设置nodeValue属性的值。对于那些返回null的节点，设置nodeValue属性是无效的。</p>
-<h2 id="1-4-、节点关系"><a href="#1-4-、节点关系" class="headerlink" title="1.4 、节点关系"></a>1.4 、节点关系</h2><ul>
-<li>parentNode    父节点</li>
-<li>childNodes    子节点</li>
-<li>firstChild    父节点里的第一个子节点</li>
-<li>lastChild     父节点里的最后一个子节点</li>
-<li>nextSibling    与子节点并列的下一个兄弟节点</li>
-<li>previousSibling   与子节点并列的上一个兄弟节点</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;DOM&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;h1&gt;我的父节点是谁？&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;Hello world!&lt;/p&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>（1）Node.parentNode</p>
-</blockquote>
-<p>parentNode属性返回当前节点的父节点。对于一个节点来说，它的父节点只可能是三种类型：元素(Element )节点、文档(Document )节点、文档碎片(DocumentFragment)节点。</p>
-<blockquote>
-<p>（2）Node.childNodes</p>
-</blockquote>
-<p>childNodes属性返回一个NodeList集合，成员包括当前节点的所有子节点。注意，除了HTML元素节点，该属性返回的还包括Text节点和Comment节点。如果当前节点不包括任何子节点，则返回一个空的NodeList集合。由于NodeList对象是一个动态集合，一旦子节点发生变化，立刻会反映在返回结果之中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var ulElementChildNodes = document.querySelector(&apos;ul&apos;).childNodes;</span><br></pre></td></tr></table></figure>
-<p><strong>ps</strong>：</p>
-<ol>
-<li>NodeList 对象代表一个有顺序的节点列表。可通过节点列表中的节点索引号来访问列表中的节点(索引号由0开始)；也可以用 length 属性来确定指定类名的元素个数。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//查看文档中有多少个样式 class=&quot;example&quot; 的元素</span><br><span class="line">document.getElementsByClassName(&quot;example&quot;).length;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>（3）Node.firstChild，Node.lastChild<br>firstChild属性返回当前节点的第一个子节点，如果当前节点没有子节点，则返回null（注意，不是undefined）。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;p id=&quot;para-01&quot;&gt;</span><br><span class="line">    &lt;span&gt;First span&lt;/span&gt;</span><br><span class="line">&lt;/p&gt;</span><br><span class="line">&lt;p id=&quot;para-02&quot;&gt;&lt;span&gt;First span&lt;/span&gt; &lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    console.log(</span><br><span class="line">            document.getElementById(&apos;para-01&apos;).firstChild.nodeName,</span><br><span class="line">            document.getElementById(&apos;para-02&apos;).firstChild.nodeName</span><br><span class="line">    ) ;  //??</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>（4）Node.nextSibling</p>
-</blockquote>
-<p>Node.nextSibling属性返回紧跟在当前节点后面的第一个同级节点。如果当前节点后面没有同级节点，则返回null。注意，该属性还包括文本节点和评论节点。因此如果当前节点后面有空格，该属性会返回一个文本节点，内容为空格。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;div-01&quot;&gt;Here is div-01&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;div-02&quot;&gt;Here is div-02&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    var el = document.getElementById(&apos;div-01&apos;).nextSibling,</span><br><span class="line">        i = 1;</span><br><span class="line">    while (el) &#123;</span><br><span class="line">      console.log(i + &apos;. &apos; + el.nodeName);  //??</span><br><span class="line">      el = el.nextSibling;</span><br><span class="line">      i++;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>下面两个表达式指向同一个节点。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//???</span><br><span class="line">document.childNodes[0].childNodes[1]</span><br><span class="line">document.firstChild.firstChild.nextSibling</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>（5）Node.previousSibling</p>
-</blockquote>
-<p>previousSibling属性返回当前节点前面的、距离最近的一个同级节点。如果当前节点前面没有同级节点，则返回null。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&lt;span id=&quot;b1&quot;&gt;&lt;/span&gt;&lt;span id=&quot;b2&quot;&gt;&lt;/span&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    document.getElementById(&quot;b1&quot;).previousSibling;     // null</span><br><span class="line">    document.getElementById(&quot;b2&quot;).previousSibling.id;  // &quot;b1&quot;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="2、节点操作-（节点对象的一些方法）"><a href="#2、节点操作-（节点对象的一些方法）" class="headerlink" title="2、节点操作 （节点对象的一些方法）"></a>2、节点操作 （节点对象的一些方法）</h1><p>方法是我们可以在节点（HTML 元素）上执行的动作。</p>
-<p>列举一些常用的：</p>
-<h3 id="2-1、查找元素节点"><a href="#2-1、查找元素节点" class="headerlink" title="2.1、查找元素节点"></a>2.1、查找元素节点</h3><ul>
-<li>document.getElementById(id) ，返回带有指定 ID 的元素。</li>
-<li>document.getElementsByName(name)，返回带有指定名称的对象的集合。（查询元素的 name 属性）</li>
-<li>document.getElementsByTagName(tagname)，返回带有指定标签名的对象的集合。</li>
-<li>document.getElementsByClassName(classname),返回文档中所有指定类名的元素集合，作为 NodeList 对象。</li>
-</ul>
-<ol>
-<li>getElementsByClassName() 在 Internet Explorer 5,6,7,8 中无效。</li>
-</ol>
-<p><strong>栗子：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;段落1&lt;/p&gt;</span><br><span class="line">&lt;div id=&quot;main&quot;&gt;</span><br><span class="line">    &lt;p&gt;段落2&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;段落3&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; name=&quot;myInput&quot;&gt;</span><br><span class="line">&lt;div class=&quot;color example&quot;&gt;classname1&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;color&quot;&gt;classname2&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">document.getElementById(&quot;main&quot;);</span><br><span class="line">document.getElementsByName(&quot;myInput&quot;);</span><br><span class="line">document.getElementById(&quot;main&quot;).getElementsByTagName(&quot;p&quot;);</span><br><span class="line">document.getElementsByClassName(&quot;example color&quot;);</span><br></pre></td></tr></table></figure>
-<h3 id="2-2、创建节点"><a href="#2-2、创建节点" class="headerlink" title="2.2、创建节点"></a>2.2、创建节点</h3><p>Node.appendChild() 方法将一个节点添加到指定父节点的子节点列表末尾。</p>
-<p>如需向 HTML DOM 添加新元素，必须首先创建该元素（元素节点），然后向一个已存在的元素追加该元素。</p>
-<p><strong>栗子：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;div1&quot;&gt;</span><br><span class="line">    &lt;p id=&quot;p1&quot;&gt;段落1&lt;/p&gt;</span><br><span class="line">    &lt;p id=&quot;p2&quot;&gt;段落2&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var para=document.createElement(&quot;p&quot;);</span><br><span class="line">    var node=document.createTextNode(&quot;段落3&quot;);</span><br><span class="line">    para.appendChild(node);</span><br><span class="line"></span><br><span class="line">    var element=document.getElementById(&quot;div1&quot;);</span><br><span class="line">    element.appendChild(para);</span><br><span class="line">    </span><br><span class="line">    //在节点前面插入</span><br><span class="line">    document.body.insertBefore(node, element);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>解析：</strong></p>
-<ul>
-<li>createElement，创建新的 <p> 元素</p></li>
-<li>createTextNode，如需向 <p> 元素添加文本，必须首先创建文本节点。</p></li>
-<li>appendChild，向 <p> 元素追加这个文本节点</p></li>
-<li>向一个已有的元素追加这个新元素。</li>
-<li>Node.insertBefore()， 在当前节点的某个子节点之前再插入一个子节点。</li>
-<li>insertBefore 方法与 appendChild 方法不同：appendChild方法传递一个参数，由依附点来调用，传递要挂载的段落；insertBefore 方法由document.body调用，传递两个参数，要挂在的段落内容 和 挂载的依附点名称，第一个参数为包含要添加内容的段落，第二个参数为依附点，即将第一个参数的段落插在第二个参数对象之前。</li>
-</ul>
-<h3 id="2-2-1、DocumentFragment-创建文档碎片节点"><a href="#2-2-1、DocumentFragment-创建文档碎片节点" class="headerlink" title="2.2.1、DocumentFragment(创建文档碎片节点)"></a>2.2.1、DocumentFragment(创建文档碎片节点)</h3><p>在更新少量节点的时候可以直接向document.body节点中添加，但是当要向document中添加大量数据是，如果直接添加这些新节点，这个过程非常缓慢，因为每添加一个节点都会调用父节点的appendChild()方法，为了解决这个问题，可以创建一个文档碎片，把所有的新节点附加其上，然后把文档碎片一次性添加到document中。</p>
-<p><strong>栗子：</strong></p>
-<p>创建十个段落，使用常规的方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//调用了十次document.body.appendChild()，每次都要产生一次页面渲染。</span><br><span class="line">for(var i = 0 ; i &lt; 10; i ++) &#123;</span><br><span class="line">    var p = document.createElement(&quot;p&quot;);</span><br><span class="line">    var oTxt = document.createTextNode(&quot;段落&quot; + i);</span><br><span class="line">    p.appendChild(oTxt);</span><br><span class="line">    document.body.appendChild(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>创建文档碎片节点</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var oFragment = document.createDocumentFragment();</span><br><span class="line">for( var i = 0 ; i &lt; 10; i ++ ) &#123;</span><br><span class="line">    var p = document.createElement(&quot;p&quot;);</span><br><span class="line">    var oTxt = document.createTextNode(&quot;段落&quot; + i);</span><br><span class="line">    p.appendChild(oTxt);</span><br><span class="line">    oFragment.appendChild(p);</span><br><span class="line">&#125;</span><br><span class="line">document.body.appendChild(oFragment);</span><br></pre></td></tr></table></figure>
-<p>创建十个段落，使用常规的方式</p>
-<h3 id="2-3、删除节点"><a href="#2-3、删除节点" class="headerlink" title="2.3、删除节点"></a>2.3、删除节点</h3><p> 删除 HTML 元素，您必须首先获得该元素的父元素：</p>
-<p><strong>方法</strong>：Node.removeChild()，从DOM中删除一个子节点。返回删除的节点。</p>
-<p><strong>栗子：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;div1&quot;&gt;</span><br><span class="line">    &lt;p id=&quot;p1&quot;&gt;段落1&lt;/p&gt;</span><br><span class="line">    &lt;p id=&quot;p2&quot;&gt;段落2&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    //先定位父节点,然后删除其子节点</span><br><span class="line">    //如果不是child不是parent的子节点会报错</span><br><span class="line">    var parent=document.getElementById(&quot;div1&quot;);</span><br><span class="line">    var child=document.getElementById(&quot;p1&quot;);</span><br><span class="line">    parent.removeChild(child);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //无须定位父节点,通过parentNode属性直接删除自身</span><br><span class="line">    var child=document.getElementById(&quot;p1&quot;);</span><br><span class="line">    if (child.parentNode) &#123;</span><br><span class="line">      child.parentNode.removeChild(child);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    // 移除一个元素节点的所有子节点</span><br><span class="line">    var element = document.getElementById(&quot;div1&quot;);</span><br><span class="line">    while (element.firstChild) &#123;</span><br><span class="line">        element.removeChild(element.firstChild);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="2-3、替换"><a href="#2-3、替换" class="headerlink" title="2.3、替换"></a>2.3、替换</h4><p>replacedNode = parentNode.replaceChild(newChild, oldChild); ，用指定的节点替换当前节点的一个子节点，并返回被替换掉的节点。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;div1&quot;&gt;</span><br><span class="line">    &lt;p id=&quot;p1&quot;&gt;段落1&lt;/p&gt;</span><br><span class="line">    &lt;p id=&quot;p2&quot;&gt;段落2&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    // 获得被替换节点和其父节点的引用.</span><br><span class="line">    var p1 = document.createTextNode(&quot;我就是要换掉段落2&quot;);</span><br><span class="line">    var p2 = document.getElementById(&quot;p2&quot;);</span><br><span class="line">    var parentDiv = p2.parentNode;</span><br><span class="line">    </span><br><span class="line">    // 用新的p元素p1来替换掉p2</span><br><span class="line">    parentDiv.replaceChild(p1, p2);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="2-4、修改"><a href="#2-4、修改" class="headerlink" title="2.4、修改"></a>2.4、修改</h3><h4 id="（1）创建-HTML-内容"><a href="#（1）创建-HTML-内容" class="headerlink" title="（1）创建 HTML 内容"></a>（1）创建 HTML 内容</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;p id=&quot;p1&quot;&gt;Hello World!&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">document.getElementById(&quot;p1&quot;).innerHTML=&quot;New text!&quot;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="（2）改变-HTML-样式"><a href="#（2）改变-HTML-样式" class="headerlink" title="（2）改变 HTML 样式"></a>（2）改变 HTML 样式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&quot;p1&quot;).style.color=&quot;blue&quot;;</span><br></pre></td></tr></table></figure>
-<h3 id="2-5、Node-hasChildNodes"><a href="#2-5、Node-hasChildNodes" class="headerlink" title="2.5、Node.hasChildNodes()"></a>2.5、Node.hasChildNodes()</h3><p>Node.hasChildNodes方法返回一个布尔值，表示当前节点是否有子节点。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//如果foo节点有子节点，就移除第一个子节点。</span><br><span class="line">var foo = document.getElementById(&quot;foo&quot;);</span><br><span class="line"></span><br><span class="line">if (foo.hasChildNodes()) &#123;</span><br><span class="line">  foo.removeChild(foo.childNodes[0]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2-6、Node-cloneNode"><a href="#2-6、Node-cloneNode" class="headerlink" title="2.6、Node.cloneNode()"></a>2.6、Node.cloneNode()</h3><p>Node.cloneNode方法用于克隆一个节点。它接受一个布尔值作为参数，表示是否同时克隆子节点，默认是false，即不克隆子节点。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var cloneUL = document.querySelector(&apos;ul&apos;).cloneNode(true);</span><br></pre></td></tr></table></figure>
-<h3 id="The-slow-crawling-road-of-whiteMouse…"><a href="#The-slow-crawling-road-of-whiteMouse…" class="headerlink" title="The slow crawling road of whiteMouse…"></a>The slow crawling road of whiteMouse…</h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -2657,7 +2442,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>

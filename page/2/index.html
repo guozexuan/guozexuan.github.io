@@ -79,16 +79,12 @@
 
 
 
-<meta name="description" content="1、基本概念1.1、DOMDOM是JavaScript操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个JavaScript对象，从而可以用脚本进行各种操作（比如增删内容）。 浏览器会根据DOM模型，将结构化文档（比如HTML和XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。 1.2、节点DOM的最小组成单位">
-<meta property="og:type" content="article">
-<meta property="og:title" content="DOM小总结">
-<meta property="og:url" content="http://yoursite.com/2017/11/06/DOM小总结/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1、基本概念1.1、DOMDOM是JavaScript操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个JavaScript对象，从而可以用脚本进行各种操作（比如增删内容）。 浏览器会根据DOM模型，将结构化文档（比如HTML和XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。 1.2、节点DOM的最小组成单位">
-<meta property="og:updated_time" content="2018-01-06T12:06:53.740Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DOM小总结">
-<meta name="twitter:description" content="1、基本概念1.1、DOMDOM是JavaScript操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个JavaScript对象，从而可以用脚本进行各种操作（比如增删内容）。 浏览器会根据DOM模型，将结构化文档（比如HTML和XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。 1.2、节点DOM的最小组成单位">
+<meta name="twitter:title" content="Hexo">
 
 
 
@@ -118,13 +114,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/06/DOM小总结/"/>
+  <link rel="canonical" href="http://yoursite.com/page/2/"/>
 
 
 
 
 
-  <title>DOM小总结 | Hexo</title>
+  <title>Hexo</title>
   
 
 
@@ -143,7 +139,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -216,9 +213,393 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/21/video标签使用小总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/21/video标签使用小总结/" itemprop="url">video标签使用小总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-21T09:18:45+08:00">
+                2017-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>属性</li>
+<li>方法</li>
+<li>事件</li>
+</ul>
+<h3 id="1-示例："><a href="#1-示例：" class="headerlink" title="1. 示例："></a>1. 示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;video src=&quot;movie.ogg&quot; controls=&quot;controls&quot;&gt;</span><br><span class="line">    您的浏览器不支持 video 标签。</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;video width=&quot;320&quot; height=&quot;240&quot; controls&gt;</span><br><span class="line">    &lt;source src=&quot;movie.mp4&quot; type=&quot;video/mp4&quot;&gt;</span><br><span class="line">    &lt;source src=&quot;movie.ogg&quot; type=&quot;video/ogg&quot;&gt;</span><br><span class="line">    您的浏览器不支持 video 标签。</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure>
+<p>ps：<track> 标签用于规定字幕文件或其他包含文本的文件，当媒介播放时，这些文件是可见的。不过主流浏览器基本不支持所以不总结。</p>
+<h3 id="2-标签属性"><a href="#2-标签属性" class="headerlink" title="2. 标签属性"></a>2. 标签属性</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">autoplay</td>
+<td style="text-align:center">视频加载完马上播放</td>
+</tr>
+<tr>
+<td style="text-align:center">controls</td>
+<td style="text-align:center">显示控件（用户可操作）</td>
+</tr>
+<tr>
+<td style="text-align:center">loop</td>
+<td style="text-align:center">重复播放</td>
+</tr>
+<tr>
+<td style="text-align:center">muted</td>
+<td style="text-align:center">视频的音频输出为静音</td>
+</tr>
+<tr>
+<td style="text-align:center">poster</td>
+<td style="text-align:center">规定视频正在下载时显示的图像，直到用户点击播放按钮</td>
+</tr>
+<tr>
+<td style="text-align:center">preload</td>
+<td style="text-align:center">none:不预载， metadata:预载资源信息， auto:</td>
+</tr>
+<tr>
+<td style="text-align:center">src</td>
+<td style="text-align:center">视频的URL</td>
+</tr>
+<tr>
+<td style="text-align:center">height</td>
+<td style="text-align:center">视频播放器的高度</td>
+</tr>
+<tr>
+<td style="text-align:center">width</td>
+<td style="text-align:center">视频播放器的宽度</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-1-video对象属性"><a href="#2-1-video对象属性" class="headerlink" title="2.1 video对象属性"></a>2.1 video对象属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var Media = document.getElementById(&quot;myVideo&quot;);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>示例</th>
+<th>注意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>src</td>
+<td>设置或返回视频的 src 属性值。</td>
+<td>Media.src=src</td>
+<td>-</td>
+</tr>
+<tr>
+<td>currentSrc</td>
+<td>获得当前视频的 URL</td>
+<td>Media.currentSrc</td>
+<td>(只读)</td>
+</tr>
+<tr>
+<td>currentTime</td>
+<td>当前播放时间，单位为秒。为其赋值将会使媒体跳到一个新的时间。</td>
+<td>Media.currentTime</td>
+<td>-</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>返回当前视频的长度</td>
+<td>Media.duration</td>
+<td>(只读)不同的浏览器返回不同的值</td>
+</tr>
+<tr>
+<td>buffered</td>
+<td>返回 TimeRanges 对象(表示用户的音视频缓冲范围)。</td>
+<td>Media.buffered.start(0)/Media.buffered.end(0)</td>
+<td>缓冲范围指的是已缓冲音视频的时间范围。如果用户在音视频中跳跃播放，会得到多个缓冲范围</td>
+</tr>
+<tr>
+<td>ended</td>
+<td>返回视频是否已结束</td>
+<td>Media.ended</td>
+<td>返回true/false</td>
+</tr>
+<tr>
+<td>error</td>
+<td>获得视频的错误状态</td>
+<td>Media.error.code</td>
+<td>(只读)1.用户终止 2.网络错误 3.解码错误 4.URL无效</td>
+</tr>
+<tr>
+<td>paused</td>
+<td>返回视频是否已暂停</td>
+<td>Media.paused</td>
+<td>(只读)返回true/false</td>
+</tr>
+<tr>
+<td>seeking</td>
+<td>属性返回用户目前是否在音频/视频中寻址。寻址中（Seeking）指的是用户在音频/视频中移动/跳跃到新的位置。</td>
+<td>-</td>
+<td>(只读)返回true/false</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>设置或返回视频的当前音量</td>
+<td>Media.volume/Media.volume=number</td>
+<td>number必须是介于 0.0 与 1.0 之间的数字。1默认（最高音量）</td>
+</tr>
+<tr>
+<td>networkState</td>
+<td>返回音频/视频的当前网络状态</td>
+<td>Media.networkState</td>
+<td>0.此元素未初始化 1.正常但没有使用网络 2.正在下载数据 3.没有找到资源</td>
+</tr>
+<tr>
+<td>defaultPlaybackRate</td>
+<td>设置或返回音频的默认播放速度</td>
+<td>Media.defaultPlaybackRate/Media.defaultPlaybackRate=number</td>
+<td>正常速度：1.0；设置该属性仅会改变默认的播放速度，而不是当前的。</td>
+</tr>
+<tr>
+<td>playbackRate</td>
+<td>设置或返回视频的当前播放速度。</td>
+<td>Media.playbackRate/Media.playbackRate=playbackspeed</td>
+<td>默认速度1.0</td>
+</tr>
+<tr>
+<td>readyState</td>
+<td>返回视频的当前就绪状态。</td>
+<td>Media.readyState</td>
+<td>0-没有关于音频/视频是否就绪的信息;1-关于音频/视频就绪的元数据;2-关于当前播放位置的数据是可用的，但没有足够的数据来播放下一帧/毫秒;3当前及至少下一帧的数据是可用的；4- 可用数据足以开始播放</td>
+</tr>
+</tbody>
+</table>
+<p>ps：有些属性支持性不是很好就不总结，例如：defaultMuted </p>
+<h3 id="3-方法"><a href="#3-方法" class="headerlink" title="3. 方法"></a>3. 方法</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>play()</td>
+<td>播放</td>
+<td>Media.play()</td>
+</tr>
+<tr>
+<td>pause()</td>
+<td>暂停</td>
+<td>Media.pause()</td>
+</tr>
+<tr>
+<td>load()</td>
+<td>重新加载音频/视频元素(在更改来源或其他设置后对音频/视频元素进行更新)</td>
+<td>Media.src = “movie.ogg”; Media.load();</td>
+</tr>
+<tr>
+<td>canPlayType()</td>
+<td>是否能播放某种格式的资源</td>
+<td>返回值：”probably” - 最有可能支持；”maybe” - 可能支持；”” - （空字符串）不支持</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-事件"><a href="#4-事件" class="headerlink" title="4. 事件"></a>4. 事件</h3><p>（总结几个比较常用的事件）</p>
+<p>语法举例（其他类似）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;video onplay=&quot;myScript&quot;&gt;</span><br><span class="line"></span><br><span class="line">video.onplay=function()&#123;myScript&#125;;</span><br><span class="line"></span><br><span class="line">video.addEventListener(&quot;play&quot;, myScript);</span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>play</td>
+<td>在音频/视频(audio/video)开始播放时触发。</td>
+</tr>
+<tr>
+<td>playing</td>
+<td>在音频/视频(audio/video)因缓冲而暂停或停止后已就绪时触发。</td>
+</tr>
+<tr>
+<td>pause</td>
+<td>在音频/视频(audio/video)暂停时触发。</td>
+</tr>
+<tr>
+<td>ended</td>
+<td>在音频/视频(audio/video)播放完成后触发。</td>
+</tr>
+<tr>
+<td>waiting</td>
+<td>在视频由于需要缓冲下一帧而停止时触发。</td>
+</tr>
+<tr>
+<td>timeupdate</td>
+<td>音频/视频（audio/video）的播放位置发生改变时触发。（移动视频播放位置可调用）</td>
+</tr>
+<tr>
+<td>error</td>
+<td>在音频/视频(audio/video)加载发生错误时触发。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>当音频/视频处于加载过程中时，会依次发生以下事件：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>loadstart</td>
+<td>当加载过程开始时</td>
+</tr>
+<tr>
+<td>durationchange</td>
+<td>当指定音频/视频的时长数据发生变化时，会发生durationchange 事件。</td>
+</tr>
+<tr>
+<td>loadedmetadata</td>
+<td>当指定的音频/视频的元数据（时长、尺寸（仅视频）以及文本轨道）已加载时，会发生 loadedmetadata 事件。</td>
+</tr>
+<tr>
+<td>loadeddata</td>
+<td>当当前帧的数据已加载，但没有足够的数据来播放指定音频/视频的下一帧时，会发生 loadeddata 事件。</td>
+</tr>
+<tr>
+<td>progress</td>
+<td>当浏览器正在下载指定的音频/视频时，会发生 progress 事件。</td>
+</tr>
+<tr>
+<td>canplay</td>
+<td>当浏览器能够开始播放指定的音频/视频时</td>
+</tr>
+<tr>
+<td>canplaythrough</td>
+<td>当浏览器预计能够在不停下来进行缓冲的情况下持续播放指定的音频/视频时，会发生 canplaythrough 事件。</td>
+</tr>
+</tbody>
+</table>
+<p>走过路过别错过，批评好评都接受，哈哈哈哈哈哈哈~~</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
 
   
 
@@ -248,7 +629,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">DOM小总结</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/06/DOM小总结/" itemprop="url">DOM小总结</a></h1>
         
 
         <div class="post-meta">
@@ -298,7 +681,9 @@
       
 
       
-        <h1 id="1、基本概念"><a href="#1、基本概念" class="headerlink" title="1、基本概念"></a>1、基本概念</h1><h2 id="1-1、DOM"><a href="#1-1、DOM" class="headerlink" title="1.1、DOM"></a>1.1、DOM</h2><p>DOM是JavaScript操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个JavaScript对象，从而可以用脚本进行各种操作（比如增删内容）。</p>
+        
+          
+            <h1 id="1、基本概念"><a href="#1、基本概念" class="headerlink" title="1、基本概念"></a>1、基本概念</h1><h2 id="1-1、DOM"><a href="#1-1、DOM" class="headerlink" title="1.1、DOM"></a>1.1、DOM</h2><p>DOM是JavaScript操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个JavaScript对象，从而可以用脚本进行各种操作（比如增删内容）。</p>
 <p>浏览器会根据DOM模型，将结构化文档（比如HTML和XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。</p>
 <h2 id="1-2、节点"><a href="#1-2、节点" class="headerlink" title="1.2、节点"></a>1.2、节点</h2><p>DOM的最小组成单位叫做节点（node）。文档的树形结构（DOM树），就是由各种不同类型的节点组成。每个节点可以看作是文档树的一片叶子。<br>（==看图 go==）</p>
 <blockquote>
@@ -512,6 +897,8 @@
 <h3 id="2-6、Node-cloneNode"><a href="#2-6、Node-cloneNode" class="headerlink" title="2.6、Node.cloneNode()"></a>2.6、Node.cloneNode()</h3><p>Node.cloneNode方法用于克隆一个节点。它接受一个布尔值作为参数，表示是否同时克隆子节点，默认是false，即不克隆子节点。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var cloneUL = document.querySelector(&apos;ul&apos;).cloneNode(true);</span><br></pre></td></tr></table></figure>
 <h3 id="The-slow-crawling-road-of-whiteMouse…"><a href="#The-slow-crawling-road-of-whiteMouse…" class="headerlink" title="The slow crawling road of whiteMouse…"></a>The slow crawling road of whiteMouse…</h3>
+          
+        
       
     </div>
     
@@ -528,28 +915,12 @@
       
 
       
-      
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/21/video标签使用小总结/" rel="prev" title="video标签使用小总结">
-                video标签使用小总结 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -559,11 +930,14 @@
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -571,10 +945,6 @@
 
 
           
-
-  
-
-
 
         </div>
         
@@ -595,17 +965,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -647,22 +1008,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、基本概念"><span class="nav-number">1.</span> <span class="nav-text">1、基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1、DOM"><span class="nav-number">1.1.</span> <span class="nav-text">1.1、DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2、节点"><span class="nav-number">1.2.</span> <span class="nav-text">1.2、节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3、DOM节点信息"><span class="nav-number">1.3.</span> <span class="nav-text">1.3、DOM节点信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）节点类型（nodeType）、节点名称（nodeName）"><span class="nav-number">1.3.1.</span> <span class="nav-text">（1）节点类型（nodeType）、节点名称（nodeName）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）节点值（nodeValue）"><span class="nav-number">1.3.2.</span> <span class="nav-text">（2）节点值（nodeValue）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-、节点关系"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 、节点关系</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、节点操作-（节点对象的一些方法）"><span class="nav-number">2.</span> <span class="nav-text">2、节点操作 （节点对象的一些方法）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1、查找元素节点"><span class="nav-number">2.0.1.</span> <span class="nav-text">2.1、查找元素节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2、创建节点"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.2、创建节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1、DocumentFragment-创建文档碎片节点"><span class="nav-number">2.0.3.</span> <span class="nav-text">2.2.1、DocumentFragment(创建文档碎片节点)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3、删除节点"><span class="nav-number">2.0.4.</span> <span class="nav-text">2.3、删除节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3、替换"><span class="nav-number">2.0.4.1.</span> <span class="nav-text">2.3、替换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4、修改"><span class="nav-number">2.0.5.</span> <span class="nav-text">2.4、修改</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）创建-HTML-内容"><span class="nav-number">2.0.5.1.</span> <span class="nav-text">（1）创建 HTML 内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）改变-HTML-样式"><span class="nav-number">2.0.5.2.</span> <span class="nav-text">（2）改变 HTML 样式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5、Node-hasChildNodes"><span class="nav-number">2.0.6.</span> <span class="nav-text">2.5、Node.hasChildNodes()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6、Node-cloneNode"><span class="nav-number">2.0.7.</span> <span class="nav-text">2.6、Node.cloneNode()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-slow-crawling-road-of-whiteMouse…"><span class="nav-number">2.0.8.</span> <span class="nav-text">The slow crawling road of whiteMouse…</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -796,10 +1141,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 

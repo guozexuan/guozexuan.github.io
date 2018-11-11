@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="这是一篇多图博客，便捷插入图片分享  TortoiseGit简介tortoiseGit是一个开放的git版本控制系统的源客户端,该软件功能和git一样。不同的是：git是命令行操作模式，tortoiseGit界面化操作模式。下载 安装步骤1、下载所需版本，需要汉化的顺便下载第二个箭头指向的chinese,xxx，英语66的请忽略~~点击安装，一直下一步即可，途中可能有那些配置什么什么的，先忽略，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TortoiseGit使用小记">
+<meta property="og:url" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="这是一篇多图博客，便捷插入图片分享  TortoiseGit简介tortoiseGit是一个开放的git版本控制系统的源客户端,该软件功能和git一样。不同的是：git是命令行操作模式，tortoiseGit界面化操作模式。下载 安装步骤1、下载所需版本，需要汉化的顺便下载第二个箭头指向的chinese,xxx，英语66的请忽略~~点击安装，一直下一步即可，途中可能有那些配置什么什么的，先忽略，">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/3.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/4.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/5.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/6.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/7.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/8.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/9.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/10.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/11.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/12.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/14.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/13.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/15.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/16.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/17.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/18.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/19.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/20.png">
+<meta property="og:updated_time" content="2018-11-11T19:22:14.630Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TortoiseGit使用小记">
+<meta name="twitter:description" content="这是一篇多图博客，便捷插入图片分享  TortoiseGit简介tortoiseGit是一个开放的git版本控制系统的源客户端,该软件功能和git一样。不同的是：git是命令行操作模式，tortoiseGit界面化操作模式。下载 安装步骤1、下载所需版本，需要汉化的顺便下载第二个箭头指向的chinese,xxx，英语66的请忽略~~点击安装，一直下一步即可，途中可能有那些配置什么什么的，先忽略，">
+<meta name="twitter:image" content="http://yoursite.com/2018/10/12/TortoiseGit使用小记/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/12/TortoiseGit使用小记/"/>
+
+
+
+
+
+  <title>TortoiseGit使用小记 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/12/TortoiseGit使用小记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">TortoiseGit使用小记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-12T00:11:03+08:00">
+                2018-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>这是一篇多图博客，<a href="https://www.jianshu.com/p/cf0628478a4e" target="_blank" rel="noopener">便捷插入图片分享</a></p>
+</blockquote>
+<h2 id="TortoiseGit简介"><a href="#TortoiseGit简介" class="headerlink" title="TortoiseGit简介"></a>TortoiseGit简介</h2><p>tortoiseGit是一个开放的git版本控制系统的源客户端,该软件功能和git一样。<br>不同的是：git是命令行操作模式，tortoiseGit界面化操作模式。<br><a href="https://tortoisegit.org/download/" target="_blank" rel="noopener">下载</a></p>
+<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><p>1、下载所需版本，需要汉化的顺便下载第二个箭头指向的chinese,xxx，英语66的请忽略~~<br>点击安装，一直下一步即可，途中可能有那些配置什么什么的，先忽略，后面再配置</p>
+<img src="/2018/10/12/TortoiseGit使用小记/1.png" class="TortoiseGit使用小记.jpg">
+<p>语言包直接点击打开安装即可，然后就可以选择中文版了~</p>
+<img src="/2018/10/12/TortoiseGit使用小记/2.png" class="TortoiseGit使用小记.jpg">
+<p>可能会遇到git版本过低，重新安装覆盖即可<br><img src="/2018/10/12/TortoiseGit使用小记/3.png" class="TortoiseGit使用小记.jpg"><br><img src="/2018/10/12/TortoiseGit使用小记/4.png" class="TortoiseGit使用小记.jpg"></p>
+<p>到这里安装好了~接下来配置</p>
+<p>2、配置秘钥</p>
+<p><a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" target="_blank" rel="noopener">下载</a> PuttyGen:是一套可以产生密钥的工具;可以生成RSA或DSA密钥;用于Putty、Plink、PSFP、PSCP和Pageant.</p>
+<ul>
+<li><p>点击Generate生成密钥：<br><font color="#ff0606">注意：生成时鼠标要不停划过进度条，不然进度条会一直不动！ </font></p>
+<img src="/2018/10/12/TortoiseGit使用小记/5.png" class="TortoiseGit使用小记.jpg">
+</li>
+<li><p>先点击Save private key把私有的密钥存起来，记住存储的位置,后面会用到</p>
+<img src="/2018/10/12/TortoiseGit使用小记/6.png" class="TortoiseGit使用小记.jpg">
+</li>
+<li><p>把生成出来的public Key复制粘贴到Gitlab上面，配置SSH key</p>
+<img src="/2018/10/12/TortoiseGit使用小记/7.png" class="TortoiseGit使用小记.jpg">
+</li>
+<li><p>打开：开始–&gt;TortoiseGit–&gt;Pageant，打开以后右下角会有图标，双击点开蓝屏幕电脑那个图标<br><font color="#c35959">说明：使用TortoiseGit进行和远端输出项目时，Pageant必须启动且添加了对应的私钥。否则会报错 </font></p>
+<img src="/2018/10/12/TortoiseGit使用小记/8.png" class="TortoiseGit使用小记.jpg">
+<img src="/2018/10/12/TortoiseGit使用小记/9.png" class="TortoiseGit使用小记.jpg">
+</li>
+</ul>
+<p>到这里已经可以使用了~</p>
+<ul>
+<li>Pageant在git中主要负责和服务器端进行身份验证，但是每次在启动Pageant后都需要手动的加载秘钥文件，为了避免每次使用都要重复添加私钥，可以设置一下自动加载。</li>
+</ul>
+<p>(1)Pageant 的开机自启<br>首先找到TortoiseGit 的安装目录的bin目录，然后找到pageant.exe 然后单击右键 创建快捷方式，此时bin目录中有 两个pageant.exe 文件</p>
+<img src="/2018/10/12/TortoiseGit使用小记/10.png" class="TortoiseGit使用小记.jpg">
+<p>win10添加自启项：win+r =&gt; 输入：shell:startup =&gt;  将自启项的快捷方式丢进去即可</p>
+<img src="/2018/10/12/TortoiseGit使用小记/11.png" class="TortoiseGit使用小记.jpg">
+<p>win10查看自启项：win+r =&gt; 输入：msconfig =&gt; 启动-打开任务管理器-启动。<br>即可查看是否添加成功</p>
+<p>(2)关联加载秘钥ppk<br>在上面的开机自启文件夹下 选中pageant 的快捷方式 查看属性，在目标的一栏，前面是 pageant 程序的位置 ，在后面空格 然后粘贴ppk秘钥的路径（前面保存过的），然后点击确定就搞定了 </p>
+<img src="/2018/10/12/TortoiseGit使用小记/12.png" class="TortoiseGit使用小记.jpg">
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>大致功能如图：（每台电脑貌似会存在差异，）<br><img src="/2018/10/12/TortoiseGit使用小记/14.png" class="TortoiseGit使用小记.jpg"></p>
+<h4 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h4><p>空白文件夹右键 - Git克隆：<br>填入仓库地址<br><img src="/2018/10/12/TortoiseGit使用小记/13.png" class="TortoiseGit使用小记.jpg"></p>
+<h4 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h4><p>右键-切换切出-创建分支<br>右键-创建分支<br><img src="/2018/10/12/TortoiseGit使用小记/15.png" class="TortoiseGit使用小记.jpg"></p>
+<h4 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h4><img src="/2018/10/12/TortoiseGit使用小记/16.png" class="TortoiseGit使用小记.jpg">
+<img src="/2018/10/12/TortoiseGit使用小记/17.png" class="TortoiseGit使用小记.jpg">
+<img src="/2018/10/12/TortoiseGit使用小记/18.png" class="TortoiseGit使用小记.jpg">
+<img src="/2018/10/12/TortoiseGit使用小记/19.png" class="TortoiseGit使用小记.jpg">
+<img src="/2018/10/12/TortoiseGit使用小记/20.png" class="TortoiseGit使用小记.jpg">
+<p>。。。。还有很多功能呀，自己慢慢摸索~~~</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/10/快应用笔记之组件通信/" rel="next" title="快应用笔记之组件通信">
+                <i class="fa fa-chevron-left"></i> 快应用笔记之组件通信
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TortoiseGit简介"><span class="nav-number">1.</span> <span class="nav-text">TortoiseGit简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装步骤"><span class="nav-number">2.</span> <span class="nav-text">安装步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#克隆"><span class="nav-number">3.0.1.</span> <span class="nav-text">克隆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支操作"><span class="nav-number">3.0.2.</span> <span class="nav-text">分支操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提交"><span class="nav-number">3.0.3.</span> <span class="nav-text">提交</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

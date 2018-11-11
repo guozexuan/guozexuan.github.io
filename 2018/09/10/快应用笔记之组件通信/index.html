@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、父传子props123456789101112131415161718192021222324252627282930313233343536# 父组件&amp;lt;import name=&amp;quot;comp-part1&amp;quot; src=&amp;quot;../Common/part&amp;quot;&amp;gt;&amp;lt;/import&amp;gt;&amp;lt;template&amp;gt;    &amp;lt;div class=">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快应用笔记之组件通信">
+<meta property="og:url" content="http://yoursite.com/2018/09/10/快应用笔记之组件通信/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、父传子props123456789101112131415161718192021222324252627282930313233343536# 父组件&amp;lt;import name=&amp;quot;comp-part1&amp;quot; src=&amp;quot;../Common/part&amp;quot;&amp;gt;&amp;lt;/import&amp;gt;&amp;lt;template&amp;gt;    &amp;lt;div class=">
+<meta property="og:updated_time" content="2018-11-11T17:04:32.627Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="快应用笔记之组件通信">
+<meta name="twitter:description" content="一、父传子props123456789101112131415161718192021222324252627282930313233343536# 父组件&amp;lt;import name=&amp;quot;comp-part1&amp;quot; src=&amp;quot;../Common/part&amp;quot;&amp;gt;&amp;lt;/import&amp;gt;&amp;lt;template&amp;gt;    &amp;lt;div class=">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/10/快应用笔记之组件通信/"/>
+
+
+
+
+
+  <title>快应用笔记之组件通信 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/10/快应用笔记之组件通信/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">快应用笔记之组件通信</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-10T11:02:56+08:00">
+                2018-09-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、父传子"><a href="#一、父传子" class="headerlink" title="一、父传子"></a>一、父传子</h1><h3 id="props"><a href="#props" class="headerlink" title="props"></a>props</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"># 父组件</span><br><span class="line">&lt;import name=&quot;comp-part1&quot; src=&quot;../Common/part&quot;&gt;&lt;/import&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;tutorial-page&quot;&gt;</span><br><span class="line">        &lt;text class=&quot;tutorial-title&quot;&gt;页面父组件：&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;&#123;&#123; data1 &#125;&#125;&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;&#123;&#123; data2.name &#125;&#125;&lt;/text&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;!-- 子组件参数传递 --&gt;</span><br><span class="line">        &lt;comp-part1 prop1=&quot;&#123;&#123;data1&#125;&#125;&quot; prop2-object=&quot;&#123;&#123;data2&#125;&#125;&quot;&gt;&lt;/comp-part1&gt;</span><br><span class="line">        </span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;less&quot;&gt;</span><br><span class="line">    .tutorial-page &#123;</span><br><span class="line">        flex-direction: column;</span><br><span class="line">        padding: 20px 10px;</span><br><span class="line">        .tutorial-title &#123;</span><br><span class="line">            font-weight: bold;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    // 父组件</span><br><span class="line">    export default &#123;</span><br><span class="line">        private: &#123;</span><br><span class="line">            data1: &apos;string&apos;,</span><br><span class="line">            data2: &#123;</span><br><span class="line">                name: &apos;object&apos;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"># 子组件</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;tutorial-page&quot;&gt;</span><br><span class="line">        &lt;text class=&quot;tutorial-title&quot;&gt;子组件:&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;&#123;&#123; prop1 &#125;&#125;&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;&#123;&#123; prop2Object.name &#125;&#125;&lt;/text&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;less&quot;&gt;</span><br><span class="line">    .tutorial-page &#123;</span><br><span class="line">        flex-direction: column;</span><br><span class="line">        padding-top: 20px;</span><br><span class="line">        .tutorial-title &#123;</span><br><span class="line">            font-weight: bold;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    // 子组件</span><br><span class="line">    export default &#123;</span><br><span class="line">      props: [</span><br><span class="line">        &apos;prop1&apos;,</span><br><span class="line">        &apos;prop2Object&apos;</span><br><span class="line">      ],</span><br><span class="line">      data: &#123;&#125;,</span><br><span class="line">      onInit () &#123;</span><br><span class="line">        console.info(`父组件传递下来的值：`, this.prop1, this.prop2Object)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="二、双向的事件传递"><a href="#二、双向的事件传递" class="headerlink" title="二、双向的事件传递"></a>二、双向的事件传递</h1><blockquote>
+<p>父子组件之间的事件触发：$broadcast()、$dispatch()、子组件$emit()节点绑定的事件</p>
+</blockquote>
+<h2 id="1-向下传递：父组件触发，子组件响应；调用parentVm-broadcast-完成向下传递，子组件-on-响应，如：evtType1"><a href="#1-向下传递：父组件触发，子组件响应；调用parentVm-broadcast-完成向下传递，子组件-on-响应，如：evtType1" class="headerlink" title="1.向下传递：父组件触发，子组件响应；调用parentVm.$broadcast()完成向下传递，子组件 $on 响应，如：evtType1"></a>1.向下传递：父组件触发，子组件响应；调用parentVm.$broadcast()完成向下传递，子组件 $on 响应，如：evtType1</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"># 父组件</span><br><span class="line">&lt;import name=&quot;comp-part1&quot; src=&quot;../Common/part&quot;&gt;</span><br><span class="line">&lt;/import&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;tutorial-page&quot;&gt;</span><br><span class="line">        &lt;text class=&quot;tutorial-title&quot;&gt;页面父组件：&lt;/text&gt;</span><br><span class="line">        &lt;text onclick=&quot;evtType1Emit&quot;&gt;触发$broadcast()，向下传递&lt;/text&gt;</span><br><span class="line">        &lt;!-- 子组件 --&gt;</span><br><span class="line">        &lt;comp-part1&gt;&lt;/comp-part1&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;less&quot;&gt;</span><br><span class="line">    .tutorial-page &#123;</span><br><span class="line">        flex-direction: column;</span><br><span class="line">        padding: 20px 10px;</span><br><span class="line">        .tutorial-title &#123;</span><br><span class="line">            font-weight: bold;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    // 父组件</span><br><span class="line">    export default &#123;</span><br><span class="line">        data: &#123;&#125;,</span><br><span class="line">        //触发$broadcast()</span><br><span class="line">        evtType1Emit () &#123;</span><br><span class="line">            this.$broadcast(&apos;evtType1&apos;, &#123; params: &apos;额外参数&apos;, channel: &apos;test&apos;&#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"># 子组件</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;tutorial-page&quot;&gt;</span><br><span class="line">        &lt;text class=&quot;tutorial-title&quot;&gt;子组件:&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;1、父组件触发子组件响应，子组件接收的参数 e.detail：&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;&#123;&#123; parentDate &#125;&#125;&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;2、e.type：&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;&#123;&#123; Etype &#125;&#125;&lt;/text&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;less&quot;&gt;</span><br><span class="line">    .tutorial-page &#123;</span><br><span class="line">        flex-direction: column;</span><br><span class="line">        padding-top: 20px;</span><br><span class="line">        .tutorial-title &#123;</span><br><span class="line">            font-weight: bold;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    // 子组件</span><br><span class="line">    export default &#123;</span><br><span class="line">        data: &#123;</span><br><span class="line">            parentDate: &apos;&apos;,</span><br><span class="line">            Etype: &apos;&apos;</span><br><span class="line">        &#125;,</span><br><span class="line">        onInit() &#123;</span><br><span class="line">            // 绑定VM的自定义事件 </span><br><span class="line">            //evtType1 要跟父组件 $broadcast 的对应一致</span><br><span class="line">            //responseEvent 子组件响应以后的操作</span><br><span class="line">            this.$on(&apos;evtType1&apos;, this.responseEvent )</span><br><span class="line">        &#125;,</span><br><span class="line">        responseEvent (e) &#123;</span><br><span class="line">            console.info(&apos;子组件evt&apos;, e)</span><br><span class="line">            console.info(`子组件：事件响应: `, e.type, e.detail)</span><br><span class="line">            console.info(`evt.detail.channel: `, e.detail.channel)</span><br><span class="line">            this.parentDate = JSON.stringify(e.detail);</span><br><span class="line">            this.Etype = JSON.stringify(e.type);</span><br><span class="line">            // 结束事件传递</span><br><span class="line">            // evt.stop()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="2-向上传递：子组件触发，父组件响应；调用childVm-dispath-完成向上传递，如：evtType2"><a href="#2-向上传递：子组件触发，父组件响应；调用childVm-dispath-完成向上传递，如：evtType2" class="headerlink" title="2.向上传递：子组件触发，父组件响应；调用childVm.$dispath()完成向上传递，如：evtType2"></a>2.向上传递：子组件触发，父组件响应；调用childVm.$dispath()完成向上传递，如：evtType2</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"># 子组件</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;tutorial-page&quot;&gt;</span><br><span class="line">        &lt;text class=&quot;tutorial-title&quot;&gt;子组件:&lt;/text&gt;</span><br><span class="line">        &lt;text onclick=&quot;evtType2Dispatch&quot;&gt;$dispatch触发向上传递&lt;/text&gt;</span><br><span class="line">        &lt;text onclick=&quot;evtType2Emit&quot;&gt;$emit触发向上传递&lt;/text&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;less&quot;&gt;</span><br><span class="line">    .tutorial-page &#123;</span><br><span class="line">        flex-direction: column;</span><br><span class="line">        padding-top: 20px;</span><br><span class="line">        .tutorial-title &#123;</span><br><span class="line">            font-weight: bold;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    // 子组件</span><br><span class="line">    export default &#123;</span><br><span class="line">        data: &#123;&#125;,</span><br><span class="line">        onInit() &#123;</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        evtType2Dispatch () &#123;</span><br><span class="line">            this.$dispatch(&apos;evtType2&apos;, &#123; params: &apos;$dispatch&apos;, respose: &apos;向上传递&apos; &#125;)</span><br><span class="line">        &#125;,</span><br><span class="line">        evtType2Emit () &#123;</span><br><span class="line">            this.$emit(&apos;evtType3&apos;, &#123; params: &apos;$emit&apos;, respose: &apos;向上传递&apos; &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"># 父组件</span><br><span class="line">&lt;import name=&quot;comp-part1&quot; src=&quot;../Common/part&quot;&gt;</span><br><span class="line">&lt;/import&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;tutorial-page&quot;&gt;</span><br><span class="line">        &lt;text class=&quot;tutorial-title&quot;&gt;页面父组件：&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;$dispatch: &#123;&#123; childData &#125;&#125;&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;$emit: &#123;&#123; childData2 &#125;&#125;&lt;/text&gt;</span><br><span class="line">        &lt;!-- 子组件 evt-type2 =&gt; evtType2 --&gt;</span><br><span class="line">        &lt;comp-part1 onevt-type2=&quot;parentResponse&quot; onevt-type3=&quot;parentResponse3&quot;&gt;&lt;/comp-part1&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;less&quot;&gt;</span><br><span class="line">    .tutorial-page &#123;</span><br><span class="line">        flex-direction: column;</span><br><span class="line">        padding: 20px 10px;</span><br><span class="line">        .tutorial-title &#123;</span><br><span class="line">            font-weight: bold;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    // 父组件</span><br><span class="line">    export default &#123;</span><br><span class="line">        data: &#123;</span><br><span class="line">            childData: &apos;&apos;,</span><br><span class="line">            childData2: &apos;&apos;</span><br><span class="line">        &#125;,</span><br><span class="line">        parentResponse(e) &#123;</span><br><span class="line">            console.log(`父组件事件响应1: `, e);</span><br><span class="line">            console.info(`父组件：事件响应: `, e.type, e.detail)</span><br><span class="line">            this.childData = JSON.stringify(e.detail)</span><br><span class="line">            // 结束事件传递</span><br><span class="line">            // evt.stop()</span><br><span class="line">        &#125;,</span><br><span class="line">        parentResponse3(e) &#123;</span><br><span class="line">            this.childData2 = JSON.stringify(e.detail)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="三、兄弟组件通信"><a href="#三、兄弟组件通信" class="headerlink" title="三、兄弟组件通信"></a>三、兄弟组件通信</h1><blockquote>
+<p>传统的兄弟等非父子组件之间通信，是通过Publish/Subscribe模型来完成。<br>开发者如果想要使用这样的能力，当然可以自己写一个Pub/Sub模型实现通信解耦；当然在业务逻辑相对简单的情况下，也可以使用ViewModel本身的事件绑定来处理：$on()，$emit()。</p>
+</blockquote>
+<p>子组件定义了Sub端的逻辑处理，有processMessage()、customEventInVm2()，后者同使用$on效果一致</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"># 组件2 part2</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;tutorial-page&quot;&gt;</span><br><span class="line">        &lt;text class=&quot;tutorial-title&quot;&gt;自定义组件2:&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;处理消息：&#123;&#123;msg&#125;&#125;&lt;/text&gt;</span><br><span class="line">        &lt;text&gt;事件内容：&#123;&#123;eventDetail&#125;&#125;&lt;/text&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;less&quot;&gt;</span><br><span class="line">    .tutorial-page &#123;</span><br><span class="line">        flex-direction: column;</span><br><span class="line">        padding: 20px 10px;</span><br><span class="line">        .tutorial-title &#123;</span><br><span class="line">            font-weight: bold;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    // 子组件: part2</span><br><span class="line">    export default &#123;</span><br><span class="line">        props: [],</span><br><span class="line">        data() &#123;</span><br><span class="line">            return &#123;</span><br><span class="line">                msg: null,</span><br><span class="line">                eventDetail: null</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        processMessage(msg) &#123;</span><br><span class="line">            const now = (new Date).toISOString()</span><br><span class="line">            this.msg = `$&#123;now&#125;: $&#123;msg&#125;`</span><br><span class="line">        &#125;,</span><br><span class="line">        /**</span><br><span class="line">         * 通过events对象：绑定事件</span><br><span class="line">         */</span><br><span class="line">        events: &#123;</span><br><span class="line">            customEventInVm2(evt) &#123;</span><br><span class="line">                const now = (new Date).toISOString()</span><br><span class="line">                this.eventDetail = `$&#123;now&#125;: $&#123;evt.detail&#125;`</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>另外一个兄弟组件可以通过父组件中建立相互引用达到相互持有ViewModel的目的，通过在生命周期onReady()中执行establishRef()实现，如下代码所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"># 父组件</span><br><span class="line">&lt;import name=&quot;comp-part2&quot; src=&quot;../Common/part2&quot;&gt;&lt;/import&gt;</span><br><span class="line">&lt;import name=&quot;comp-part3&quot; src=&quot;../Common/part3&quot;&gt;&lt;/import&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;tutorial-page&quot;&gt;</span><br><span class="line">        &lt;!-- 兄弟VM通信 --&gt;</span><br><span class="line">        &lt;comp-part2 id=&quot;sibling2&quot;&gt;&lt;/comp-part2&gt;</span><br><span class="line">        &lt;comp-part3 id=&quot;sibling3&quot;&gt;&lt;/comp-part3&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;text @click=&quot;pppp&quot;&gt;父组件调用子组件方法&lt;/text&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;less&quot;&gt;</span><br><span class="line">    .tutorial-page &#123;</span><br><span class="line">        flex-direction: column;</span><br><span class="line">        padding: 20px 10px;</span><br><span class="line">        .tutorial-title &#123;</span><br><span class="line">            font-weight: bold;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    // 父组件</span><br><span class="line">    export default &#123;</span><br><span class="line">        onReady() &#123;</span><br><span class="line">            this.establishRef()</span><br><span class="line">        &#125;,</span><br><span class="line">        /**</span><br><span class="line">         * 建立相互VM的引用</span><br><span class="line">         */</span><br><span class="line">        establishRef() &#123;</span><br><span class="line">            const siblingVm2 = this.$vm(&apos;sibling2&apos;) </span><br><span class="line">            const siblingVm3 = this.$vm(&apos;sibling3&apos;)</span><br><span class="line">            console.info(siblingVm2)</span><br><span class="line">            console.info(siblingVm3)</span><br><span class="line">            siblingVm2.parentVm = this </span><br><span class="line">            siblingVm2.part2 = siblingVm3 //将组件3整个赋值给组件2的part2属性，打印可以看到part2属性内部就拥有组件3定义的一些方法</span><br><span class="line">            siblingVm3.parentVm = this</span><br><span class="line">            siblingVm3.part3 = siblingVm2 //将组件2整个赋值给组件3的part3属性</span><br><span class="line">        &#125;,</span><br><span class="line">        pppp() &#123;</span><br><span class="line">            this.$vm(&apos;sibling2&apos;).processMessage();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>this.$vm(id)可以获取到组件的属性跟方法</p>
+</blockquote>
+<p>那么另外一个子组件的Pub端定义就很简单了，执行sendMesssage()即可完成触发，如下代码所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"># 子组件 part3</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;tutorial-page&quot;&gt;</span><br><span class="line">        &lt;text class=&quot;tutorial-title&quot;&gt;自定义组件3:&lt;/text&gt;</span><br><span class="line">        &lt;text onclick=&quot;sendMesssage&quot;&gt;点击发送消息&lt;/text&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;less&quot;&gt;</span><br><span class="line">    .tutorial-page &#123;</span><br><span class="line">        flex-direction: column;</span><br><span class="line">        padding: 20px 10px;</span><br><span class="line">        .tutorial-title &#123;</span><br><span class="line">            font-weight: bold;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    // 子组件: part3</span><br><span class="line">    export default &#123;</span><br><span class="line">        sendMesssage() &#123;</span><br><span class="line">            // 父组件中把组件2赋值在 part3下</span><br><span class="line">            if (this.part3) &#123;</span><br><span class="line">                // Way1. 调用方法</span><br><span class="line">                this.part3.processMessage(&apos;兄弟之间通信的消息内容&apos;)</span><br><span class="line">                // Way2. 触发事件</span><br><span class="line">                this.part3.$emit(&apos;customEventInVm2&apos;, &apos;兄弟之间通信的消息内容&apos;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/19/css变量/" rel="next" title="css变量">
+                <i class="fa fa-chevron-left"></i> css变量
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/12/TortoiseGit使用小记/" rel="prev" title="TortoiseGit使用小记">
+                TortoiseGit使用小记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、父传子"><span class="nav-number">1.</span> <span class="nav-text">一、父传子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#props"><span class="nav-number">1.0.1.</span> <span class="nav-text">props</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、双向的事件传递"><span class="nav-number">2.</span> <span class="nav-text">二、双向的事件传递</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-向下传递：父组件触发，子组件响应；调用parentVm-broadcast-完成向下传递，子组件-on-响应，如：evtType1"><span class="nav-number">2.1.</span> <span class="nav-text">1.向下传递：父组件触发，子组件响应；调用parentVm.$broadcast()完成向下传递，子组件 $on 响应，如：evtType1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-向上传递：子组件触发，父组件响应；调用childVm-dispath-完成向上传递，如：evtType2"><span class="nav-number">2.2.</span> <span class="nav-text">2.向上传递：子组件触发，父组件响应；调用childVm.$dispath()完成向上传递，如：evtType2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、兄弟组件通信"><span class="nav-number">3.</span> <span class="nav-text">三、兄弟组件通信</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
