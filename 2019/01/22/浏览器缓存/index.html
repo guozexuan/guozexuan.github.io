@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="web缓存的种类有很多种，比如数据库缓存、CDN缓存、代理服务器缓存、浏览器缓存等，这里我们主要了解一下浏览器的缓存机制。 浏览器端的缓存规则对于浏览器端的缓存来讲，这些规则是在HTTP协议头和HTML页面的Meta标签中定义的。他们分别从新鲜度和校验值两个维度来规定浏览器是否可以直接使用缓存中的副本，还是需要去源服务器获取更新的版本。  新鲜度（过期机制）：也就是缓存副本有效期。一个缓存副本必须">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器缓存">
+<meta property="og:url" content="http://yoursite.com/2019/01/22/浏览器缓存/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="web缓存的种类有很多种，比如数据库缓存、CDN缓存、代理服务器缓存、浏览器缓存等，这里我们主要了解一下浏览器的缓存机制。 浏览器端的缓存规则对于浏览器端的缓存来讲，这些规则是在HTTP协议头和HTML页面的Meta标签中定义的。他们分别从新鲜度和校验值两个维度来规定浏览器是否可以直接使用缓存中的副本，还是需要去源服务器获取更新的版本。  新鲜度（过期机制）：也就是缓存副本有效期。一个缓存副本必须">
+<meta property="og:image" content="http://yoursite.com/2019/01/22/浏览器缓存/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/22/浏览器缓存/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/22/浏览器缓存/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/22/浏览器缓存/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/22/浏览器缓存/5.png">
+<meta property="og:updated_time" content="2019-01-21T17:03:46.510Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浏览器缓存">
+<meta name="twitter:description" content="web缓存的种类有很多种，比如数据库缓存、CDN缓存、代理服务器缓存、浏览器缓存等，这里我们主要了解一下浏览器的缓存机制。 浏览器端的缓存规则对于浏览器端的缓存来讲，这些规则是在HTTP协议头和HTML页面的Meta标签中定义的。他们分别从新鲜度和校验值两个维度来规定浏览器是否可以直接使用缓存中的副本，还是需要去源服务器获取更新的版本。  新鲜度（过期机制）：也就是缓存副本有效期。一个缓存副本必须">
+<meta name="twitter:image" content="http://yoursite.com/2019/01/22/浏览器缓存/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/22/浏览器缓存/"/>
+
+
+
+
+
+  <title>浏览器缓存 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/22/浏览器缓存/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">浏览器缓存</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-22T00:00:10+08:00">
+                2019-01-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>web缓存的种类有很多种，比如数据库缓存、CDN缓存、代理服务器缓存、浏览器缓存等，这里我们主要了解一下浏览器的缓存机制。</p>
+<h2 id="浏览器端的缓存规则"><a href="#浏览器端的缓存规则" class="headerlink" title="浏览器端的缓存规则"></a>浏览器端的缓存规则</h2><p>对于浏览器端的缓存来讲，这些规则是在HTTP协议头和HTML页面的Meta标签中定义的。他们分别从新鲜度和校验值两个维度来规定浏览器是否可以直接使用缓存中的副本，还是需要去源服务器获取更新的版本。</p>
+<ul>
+<li><p>新鲜度（过期机制）：也就是缓存副本有效期。一个缓存副本必须满足以下条件，浏览器会认为它是有效的，足够新的：含有完整的过期时间控制头信息（HTTP协议报头），并且仍在有效期内；<br>浏览器已经使用过这个缓存副本，并且在一个会话中已经检查过新鲜度；<br>满足以上两个情况的一种，浏览器会直接从缓存中获取副本并渲染。</p>
+</li>
+<li><p>校验值（验证机制）：服务器返回资源的时候有时在控制头信息带上这个资源的实体标签Etag（Entity Tag），它可以用来作为浏览器再次请求过程的校验标识。如过发现校验标识不匹配，说明资源已经被修改或过期，浏览器需求重新获取资源内容。</p>
+</li>
+</ul>
+<p>图示:<br><img src="/2019/01/22/浏览器缓存/1.png" class="浏览器缓存.jpg"></p>
+<blockquote>
+<p>两个概念</p>
+</blockquote>
+<ul>
+<li><p>强缓存：（Chrome下的现象是 200 OK (from disk cache) 或者 200 OK (from memory cache)）<br>用户发送的请求，直接从客户端缓存中获取，不发送请求到服务器，不与服务器发生交互行为。</p>
+</li>
+<li><p>协商缓存：（也就是我们常见的304状态码）<br>用户发送的请求，发送到服务器后，由服务器判定是否从缓存中获取资源。</p>
+</li>
+<li><p>两者共同点：客户端获得的数据最后都是从客户端缓存中获得。</p>
+</li>
+<li><p>两者的区别：从名字就可以看出，强缓存不与服务器交互，而协商缓存则需要与服务器交互。</p>
+</li>
+</ul>
+<h2 id="对上诉步骤进行一些解说"><a href="#对上诉步骤进行一些解说" class="headerlink" title="对上诉步骤进行一些解说"></a>对上诉步骤进行一些解说</h2><h3 id="步骤b-缓存是否过期"><a href="#步骤b-缓存是否过期" class="headerlink" title="步骤b:缓存是否过期"></a>步骤b:缓存是否过期</h3><p>两个参数：expires 、Cache-Control</p>
+<p>当response header中，Expires和Cache-Control同时存在时，Cache-Control优先级高于Expires</p>
+<ul>
+<li>expires </li>
+</ul>
+<p>Http1.0 中的标准，表明过期时间，注意此处的时间都是指的是服务器的时间。</p>
+<blockquote>
+<p>存在的问题：服务器时间与客户端时间的不一致，就会导致缓存跟期待效果出现偏差。</p>
+</blockquote>
+<ul>
+<li>Cache-Control</li>
+</ul>
+<p>Http1.1 中的标准，可以看成是 expires 的补充。使用的是相对时间的概念。</p>
+<p>Cache-Control的属性设置</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">解析</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">max-age</td>
+<td style="text-align:center">设置缓存的最大的有效时间，单位为秒（s）。max-age会覆盖掉Expires。&gt;0读取缓存，&lt;=0向server 发送http 请求确认 ,该资源是否有修改,有的话返回200 ,无的话返回304.</td>
+</tr>
+<tr>
+<td style="text-align:center">s-maxage</td>
+<td style="text-align:center">只用于共享缓存，比如CDN缓存（s -&gt; share）。与max-age的区别是：max-age用于普通缓存，而s-maxage用于代理缓存。如果存在s-maxage,则会覆盖max-age 和 Expires.</td>
+</tr>
+<tr>
+<td style="text-align:center">public</td>
+<td style="text-align:center">响应会被缓存，并且在多用户间共享。默认是public。</td>
+</tr>
+<tr>
+<td style="text-align:center">private</td>
+<td style="text-align:center">响应只作为私有的缓存，不能在用户间共享。如果要求HTTP认证，响应会自动设置为private</td>
+</tr>
+<tr>
+<td style="text-align:center">no-cache</td>
+<td style="text-align:center">指定不缓存响应，表明资源不进行缓存。但是设置了no-cache之后并不代表浏览器不缓存，而是在缓存前要向服务器确认资源是否被更改。因此有的时候只设置no-cache防止缓存还是不够保险，还可以加上private指令，将过期时间设为过去的时间。</td>
+</tr>
+<tr>
+<td style="text-align:center">no-store</td>
+<td style="text-align:center">绝对禁止缓存</td>
+</tr>
+<tr>
+<td style="text-align:center">must-revalidate</td>
+<td style="text-align:center">如果页面过期，则去服务器进行获取</td>
+</tr>
+</tbody>
+</table>
+<p>图示：<br><img src="/2019/01/22/浏览器缓存/2.png" class="浏览器缓存.jpg"></p>
+<p>所以判断缓存是否过期步骤是：</p>
+<p>1） 查看是否有cache-control 的max-age / s-maxage , 如果有，则用服务器时间date值 + max-age/s-maxage 的秒数计算出新的过期时间，将当前时间与过期时间进行比较，判断是否过期</p>
+<p>2）查看是否有cache-control 的max-age / s-maxage，则用expires 作为过期时间比较</p>
+<p>图示：<br><img src="/2019/01/22/浏览器缓存/3.png" class="浏览器缓存.jpg"></p>
+<h3 id="步骤c-跟服务器协商是否使用缓存"><a href="#步骤c-跟服务器协商是否使用缓存" class="headerlink" title="步骤c:跟服务器协商是否使用缓存"></a>步骤c:跟服务器协商是否使用缓存</h3><p>到这一步的时候，浏览器会向服务器发送请求，同时如果上一次的缓存中有Last-modified 和 Etag 字段，<br>浏览器将在request header 中加入If-Modified-Since（对应于Last-modified）， 和If-None-Match（对应于Etag）。</p>
+<ul>
+<li>Last-modified: 表明请求的资源上次的修改时间。</li>
+<li>If-Modified-Since：客户端保留的资源上次的修改时间。</li>
+<li>Etag：资源的内容标识。（不唯一，通常为文件的md5或者一段hash值，只要保证写入和验证时的方法一致即可）</li>
+<li>If-None-Match： 客户端保留的资源内容标识。</li>
+</ul>
+<h3 id="步骤d-协商缓存"><a href="#步骤d-协商缓存" class="headerlink" title="步骤d:协商缓存"></a>步骤d:协商缓存</h3><p>在这个阶段，服务器一般会将Cache-control、expires 、last-modified、date、etag 等字段在response header 中返回，便于下次缓存。当然具体的场景，也是看服务器的约定规则设定。</p>
+<h2 id="缓存的不同来源"><a href="#缓存的不同来源" class="headerlink" title="缓存的不同来源"></a>缓存的不同来源</h2><h3 id="from-disk-cache"><a href="#from-disk-cache" class="headerlink" title="from disk cache"></a>from disk cache</h3><p>从磁盘中获取缓存资源，等待下次访问时不需要重新下载资源，而直接从磁盘中获取。它的直接操作对象为CurlCacheManager。</p>
+<p>一般非脚本会存在内存当中，如css等</p>
+<h3 id="from-memory-cache"><a href="#from-memory-cache" class="headerlink" title="from memory cache"></a>from memory cache</h3><p>从内存中获取资源，等待下次访问时不需要重新下载资源，而直接从内存中获取。Webkit早已支持memoryCache。<br>目前Webkit资源分成两类，一类是主资源，比如HTML页面，或者下载项，一类是派生资源，比如HTML页面中内嵌的图片或者脚本链接，分别对应代码中两个类：MainResourceLoader和SubresourceLoader。虽然Webkit支持memoryCache，但是也只是针对派生资源，它对应的类为CachedResource，用于保存原始数据（比如CSS，JS等），以及解码过的图片数据。</p>
+<p>一般脚本、字体、图片会存在内存当中。</p>
+<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>当退出进程时，内存中的数据会被清空，而磁盘的数据不会，所以，当下次再进入该进程时，该进程仍可以从diskCache中获得数据，而memoryCache则不行。</p>
+<h3 id="相似"><a href="#相似" class="headerlink" title="相似"></a>相似</h3><p>diskCache与memoryCache相似之处就是也只能存储一些派生类资源文件。它的存储形式为一个index.dat文件，记录存储数据的url，然后再分别存储该url的response信息和content内容。Response信息最大作用就是用于判断服务器上该url的content内容是否被修改。</p>
+<p>图：<img src="/2019/01/22/浏览器缓存/4.png" class="浏览器缓存.jpg"></p>
+<h2 id="用户行为的缓存变化"><a href="#用户行为的缓存变化" class="headerlink" title="用户行为的缓存变化"></a>用户行为的缓存变化</h2><h3 id="f5刷新-mac-即command-r"><a href="#f5刷新-mac-即command-r" class="headerlink" title="f5刷新(mac 即command + r)"></a>f5刷新(mac 即command + r)</h3><p>没啥变化</p>
+<h3 id="强制刷新-command-shift-r"><a href="#强制刷新-command-shift-r" class="headerlink" title="强制刷新(command+shift+r)"></a>强制刷新(command+shift+r)</h3><p>在request中多了个属性：<br>都有Cache-Control: no-cache的标识。<br>这表明每次都需要服务器评估是否有效，不要理解为直接不使用缓存。<br>此外可以注意到request中没有可以匹配response中ETag的If-None-Match属性，<br>所以会重新加载。</p>
+<p>304-&gt;200</p>
+<p>看图很清晰：<br><img src="/2019/01/22/浏览器缓存/5.png" class="浏览器缓存.jpg"></p>
+<blockquote>
+<p>扩展阅读</p>
+</blockquote>
+<p><a href="http://www.alloyteam.com/2012/03/web-cache-1-web-cache-overview/" target="_blank" rel="noopener">link1</a></p>
+<p><a href="https://juejin.im/post/5bf3c28ee51d4514df5b7625" target="_blank" rel="noopener">link2</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/12/TortoiseGit使用小记/" rel="next" title="TortoiseGit使用小记">
+                <i class="fa fa-chevron-left"></i> TortoiseGit使用小记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器端的缓存规则"><span class="nav-number">1.</span> <span class="nav-text">浏览器端的缓存规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对上诉步骤进行一些解说"><span class="nav-number">2.</span> <span class="nav-text">对上诉步骤进行一些解说</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤b-缓存是否过期"><span class="nav-number">2.1.</span> <span class="nav-text">步骤b:缓存是否过期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤c-跟服务器协商是否使用缓存"><span class="nav-number">2.2.</span> <span class="nav-text">步骤c:跟服务器协商是否使用缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤d-协商缓存"><span class="nav-number">2.3.</span> <span class="nav-text">步骤d:协商缓存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存的不同来源"><span class="nav-number">3.</span> <span class="nav-text">缓存的不同来源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#from-disk-cache"><span class="nav-number">3.1.</span> <span class="nav-text">from disk cache</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#from-memory-cache"><span class="nav-number">3.2.</span> <span class="nav-text">from memory cache</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区别"><span class="nav-number">3.3.</span> <span class="nav-text">区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相似"><span class="nav-number">3.4.</span> <span class="nav-text">相似</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户行为的缓存变化"><span class="nav-number">4.</span> <span class="nav-text">用户行为的缓存变化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#f5刷新-mac-即command-r"><span class="nav-number">4.1.</span> <span class="nav-text">f5刷新(mac 即command + r)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强制刷新-command-shift-r"><span class="nav-number">4.2.</span> <span class="nav-text">强制刷新(command+shift+r)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
